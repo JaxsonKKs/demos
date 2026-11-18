@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Juniper Hair Studio (concept demo)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F6F1EA;--paper:#FFFDF9;--ink:#2B2420;--muted:#6B5F57;--line:#E3D8CC;
+  --clay:#B5654A;--clay-ink:#FFFFFF;--sage:#7D8B74;--deep:#2E3A33;
+  --serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',system-ui,-apple-system,'Segoe UI',sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:4.5rem}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.65;padding-bottom:4.5rem}
+@media (min-width:720px){body{padding-bottom:0}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--clay);outline-offset:3px}
+.w{max-width:66rem;margin:0 auto;padding-inline:max(20px,env(safe-area-inset-left,0px))}
+.demo{background:var(--deep);color:#EDE6DC;font-size:.8rem;text-align:center;padding:.45rem 1rem}
+header.top{position:sticky;top:0;z-index:5;background:rgba(246,241,234,.92);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header.top .w{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:.8rem}
+.logo{font-family:var(--serif);font-size:1.6rem;font-weight:600;letter-spacing:.01em;text-decoration:none;line-height:1}
+.logo small{display:block;font-family:var(--sans);font-size:.62rem;letter-spacing:.32em;text-transform:uppercase;color:var(--muted);margin-top:.25rem}
+nav.links{display:none;gap:1.6rem;font-size:.92rem}
+nav.links a{text-decoration:none;color:var(--muted)}
+nav.links a:hover{color:var(--ink)}
+@media (min-width:720px){nav.links{display:flex}}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;font:inherit;font-weight:600;font-size:.95rem;letter-spacing:.02em;text-decoration:none;border-radius:999px;padding:.8rem 1.5rem;border:1.5px solid var(--clay);background:var(--clay);color:var(--clay-ink);cursor:pointer}
+.btn.line{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn.sm{padding:.55rem 1.1rem;font-size:.88rem}
+.hero{display:grid;gap:2.5rem;padding-block:3rem 4rem;align-items:center}
+@media (min-width:860px){.hero{grid-template-columns:1.1fr .9fr}}
+.eyebrow{font-size:.75rem;letter-spacing:.28em;text-transform:uppercase;color:var(--sage);font-weight:600}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.05;margin:0}
+.hero h1{font-size:clamp(2.8rem,7vw,4.8rem);margin:.7rem 0 1.1rem;letter-spacing:-.01em}
+.hero h1 em{color:var(--clay)}
+.hero p.lead{font-size:1.1rem;color:var(--muted);max-width:32rem;margin:0 0 1.8rem}
+.cta{display:flex;flex-wrap:wrap;gap:.8rem}
+.meta{display:flex;flex-wrap:wrap;gap:1.4rem;margin-top:2rem;font-size:.9rem;color:var(--muted)}
+.meta b{display:block;color:var(--ink);font-weight:600}
+.frame{position:relative;aspect-ratio:4/5;border-radius:12rem 12rem 1rem 1rem;overflow:hidden;background:linear-gradient(170deg,#E9DCCD,#D7C2AE 60%,#C29C82);border:1px solid var(--line)}
+.frame svg{position:absolute;inset:0;width:100%;height:100%}
+.frame .cap{position:absolute;left:1rem;right:1rem;bottom:1rem;background:rgba(255,253,249,.88);border-radius:.8rem;padding:.75rem 1rem;font-size:.85rem;color:var(--muted)}
+.frame .cap b{color:var(--ink);font-weight:600}
+section{padding-block:clamp(3rem,7vw,5rem)}
+.alt{background:var(--paper);border-block:1px solid var(--line)}
+.sh{display:grid;gap:.5rem;margin-bottom:2.2rem;max-width:36rem}
+.sh h2{font-size:clamp(2.1rem,5vw,3rem)}
+.sh p{color:var(--muted);margin:0}
+.menu{display:grid;gap:2.5rem}
+@media (min-width:760px){.menu{grid-template-columns:1fr 1fr}}
+.menu h3{font-size:1.6rem;margin-bottom:.6rem;color:var(--clay)}
+.row{display:flex;align-items:baseline;gap:.6rem;padding:.65rem 0;border-bottom:1px dashed var(--line)}
+.row span{flex:1;font-weight:500}
+.row small{display:block;color:var(--muted);font-size:.85rem;font-weight:400}
+.row i{font-style:normal;font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums}
+.note{font-size:.85rem;color:var(--muted);margin-top:1.2rem}
+.team{display:grid;gap:1.2rem;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr))}
+.st{background:var(--bg);border:1px solid var(--line);border-radius:1rem;padding:1.4rem}
+.st .av{width:3.4rem;height:3.4rem;border-radius:50%;display:grid;place-items:center;font-family:var(--serif);font-size:1.4rem;color:#fff;margin-bottom:.9rem}
+.st h3{font-size:1.45rem}
+.st p{margin:.3rem 0 0;color:var(--muted);font-size:.93rem}
+.st .tag{display:inline-block;margin-top:.8rem;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sage);font-weight:600}
+.rev{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr))}
+.rv{border-left:3px solid var(--clay);padding:.4rem 0 .4rem 1.1rem}
+.rv .stars{color:var(--clay);letter-spacing:.15em;font-size:.9rem}
+.rv p{font-family:var(--serif);font-size:1.3rem;line-height:1.3;margin:.4rem 0}
+.rv small{color:var(--muted)}
+.visit{display:grid;gap:2rem}
+@media (min-width:760px){.visit{grid-template-columns:1fr 1fr}}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:1rem;padding:1.5rem}
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+td{padding:.5rem 0;border-bottom:1px solid var(--line)}
+td:last-child{text-align:right;color:var(--muted);font-variant-numeric:tabular-nums}
+tr:last-child td{border:0}
+tr.today td{color:var(--clay);font-weight:600}
+#open{font-weight:600;color:var(--sage);margin:0 0 .6rem}
+.book{background:var(--deep);color:#EDE6DC;border-radius:1.5rem;padding:clamp(1.8rem,5vw,3rem);display:grid;gap:1rem}
+.book h2{color:#fff;font-size:clamp(2rem,5vw,2.8rem);max-width:18ch}
+.book p{margin:0;color:#C9C0B4;max-width:34rem}
+.book .btn.line{color:#fff;border-color:#fff}
+footer{padding-block:2rem 2.5rem;font-size:.85rem;color:var(--muted)}
+footer .w{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.6rem}
+.mbar{position:fixed;left:0;right:0;bottom:0;z-index:6;display:flex;gap:.6rem;padding:.7rem max(14px,env(safe-area-inset-left,0px)) calc(.7rem + env(safe-area-inset-bottom,0px));background:rgba(246,241,234,.95);border-top:1px solid var(--line)}
+.mbar .btn{flex:1}
+@media (min-width:720px){.mbar{display:none}}
+</style>
+</head>
+<body>
+<div class="demo">Concept demo by Mainfront. Juniper Hair Studio is a made-up salon; names, prices and hours are placeholders.</div>
+
+<header class="top"><div class="w">
+  <a class="logo" href="#top">Juniper<small>Hair Studio</small></a>
+  <nav class="links"><a href="#menu">Services</a><a href="#team">Stylists</a><a href="#reviews">Reviews</a><a href="#visit">Visit</a></nav>
+  <a class="btn sm" href="#book">Book now</a>
+</div></header>
+
+<main id="top">
+  <div class="w hero">
+    <div>
+      <span class="eyebrow">Hair salon · Stony Plain, Alberta</span>
+      <h1>Hair that still looks good <em>on day five.</em></h1>
+      <p class="lead">Cuts, colour and blonding from a small team that takes the time to get it right, in a calm studio on Main Street.</p>
+      <div class="cta"><a class="btn" href="#book">Book an appointment</a><a class="btn line" href="#menu">See prices</a></div>
+      <div class="meta"><div><b>Free consults</b>For colour changes</div><div><b>Walk-ins welcome</b>When a chair is free</div><div><b>Evenings</b>Thursday until 8</div></div>
+    </div>
+    <div class="frame" role="img" aria-label="Illustration of a salon chair, mirror and plant">
+      <svg viewBox="0 0 400 500" aria-hidden="true">
+        <rect x="70" y="60" width="260" height="300" rx="130" fill="#F3EADF" stroke="#C9AE97" stroke-width="6"/>
+        <rect x="95" y="85" width="210" height="250" rx="105" fill="#E8D9C8"/>
+        <path d="M120 300 Q200 230 280 300" fill="none" stroke="#D2BCA6" stroke-width="5"/>
+        <rect x="150" y="300" width="100" height="70" rx="22" fill="#2E3A33"/>
+        <rect x="140" y="360" width="120" height="26" rx="13" fill="#3B4A41"/>
+        <rect x="193" y="386" width="14" height="60" fill="#8E7A6A"/>
+        <ellipse cx="200" cy="452" rx="62" ry="10" fill="#8E7A6A"/>
+        <rect x="300" y="380" width="44" height="60" rx="8" fill="#B5654A"/>
+        <path d="M322 380 C300 330 290 310 296 290 M322 380 C330 330 345 315 352 300 M322 380 C318 340 322 320 326 300" stroke="#7D8B74" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <circle cx="296" cy="288" r="12" fill="#7D8B74"/><circle cx="352" cy="298" r="12" fill="#7D8B74"/><circle cx="326" cy="296" r="11" fill="#93A089"/>
+      </svg>
+      <div class="cap"><b>Your own photos go here.</b> The live site uses your real studio and real work.</div>
+    </div>
+  </div>
+
+  <section class="alt" id="menu"><div class="w">
+    <div class="sh"><span class="eyebrow">Services</span><h2>Simple prices, no surprises</h2><p>Starting prices. Longer or thicker hair may take more time; your stylist will tell you before they start.</p></div>
+    <div class="menu">
+      <div>
+        <h3>Cuts</h3>
+        <div class="row"><span>Women’s cut and style<small>Wash, cut, blow-dry</small></span><i>from $55</i></div>
+        <div class="row"><span>Men’s cut<small>Clipper or scissor</small></span><i>from $32</i></div>
+        <div class="row"><span>Kids’ cut<small>12 and under</small></span><i>from $25</i></div>
+        <div class="row"><span>Blow-dry and style</span><i>from $40</i></div>
+      </div>
+      <div>
+        <h3>Colour</h3>
+        <div class="row"><span>Root touch-up<small>Up to 1 inch of regrowth</small></span><i>from $75</i></div>
+        <div class="row"><span>Full colour</span><i>from $95</i></div>
+        <div class="row"><span>Partial highlights</span><i>from $110</i></div>
+        <div class="row"><span>Balayage<small>Includes toner and style</small></span><i>from $180</i></div>
+      </div>
+    </div>
+    <p class="note">On the live site, this list matches the salon’s real menu and prices.</p>
+  </div></section>
+
+  <section id="team"><div class="w">
+    <div class="sh"><span class="eyebrow">Stylists</span><h2>Book with someone who listens</h2></div>
+    <div class="team">
+      <div class="st"><div class="av" style="background:#B5654A">M</div><h3>Maya</h3><p>Owner. Blonding and colour corrections, 12 years behind the chair.</p><span class="tag">Colour specialist</span></div>
+      <div class="st"><div class="av" style="background:#7D8B74">R</div><h3>Rachel</h3><p>Precision cuts, curly hair and short styles that grow out well.</p><span class="tag">Cuts and curls</span></div>
+      <div class="st"><div class="av" style="background:#2E3A33">D</div><h3>Dev</h3><p>Men’s cuts, fades and beard trims. Fast, clean, no fuss.</p><span class="tag">Men’s grooming</span></div>
+    </div>
+  </div></section>
+
+  <section class="alt" id="reviews"><div class="w">
+    <div class="sh"><span class="eyebrow">Reviews</span><h2>What clients say</h2><p>On the live site, these are your real Google reviews, word for word, with the reviewer’s first name.</p></div>
+    <div class="rev">
+      <div class="rv"><div class="stars">★★★★★</div><p>Your best Google review goes here.</p><small>Pulled from your listing</small></div>
+      <div class="rv"><div class="stars">★★★★★</div><p>A second review about a colour or cut.</p><small>Pulled from your listing</small></div>
+      <div class="rv"><div class="stars">★★★★★</div><p>A third review about the people.</p><small>Pulled from your listing</small></div>
+    </div>
+  </div></section>
+
+  <section id="visit"><div class="w visit">
+    <div class="card">
+      <h2 style="font-size:2rem;margin-bottom:.8rem">Hours</h2>
+      <p id="open"></p>
+      <table id="hrs"></table>
+    </div>
+    <div class="card">
+      <h2 style="font-size:2rem;margin-bottom:.8rem">Find us</h2>
+      <p style="margin:0 0 .4rem"><b>100 Main Street</b><br>Stony Plain, AB</p>
+      <p style="margin:0 0 1rem;color:var(--muted);font-size:.92rem">Street parking out front, more behind the building.</p>
+      <a class="btn line sm" href="#visit">Get directions</a>
+    </div>
+  </div></section>
+
+  <section id="book" style="padding-top:0"><div class="w">
+    <div class="book">
+      <span class="eyebrow" style="color:#C9C0B4">Book</span>
+      <h2>Ready for your next appointment?</h2>
+      <p>Call or text the studio, or book online through the salon’s existing booking page. The live site links straight to it.</p>
+      <div class="cta"><a class="btn" href="#book">Call the studio</a><a class="btn line" href="#book">Book online</a></div>
+    </div>
+  </div></section>
+</main>
+
+<footer><div class="w"><span>Juniper Hair Studio is a fictional concept.</span><span>Website by <a href="../mainfront/">Mainfront</a></span></div></footer>
+
+<div class="mbar"><a class="btn" href="#book">Call</a><a class="btn line" href="#book">Book</a></div>
+
+<script>
+(function(){
+  var days=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+  var hrs={Monday:null,Tuesday:[9,17],Wednesday:[9,17],Thursday:[9,20],Friday:[9,17],Saturday:[9,15],Sunday:null};
+  function f(h){var p=h>=12?'p.m.':'a.m.';var x=h%12||12;return x+' '+p;}
+  var today='Monday',hour=12;
+  try{today=new Date().toLocaleDateString('en-US',{weekday:'long',timeZone:'America/Edmonton'});
+      hour=parseInt(new Date().toLocaleTimeString('en-US',{hour:'2-digit',hour12:false,timeZone:'America/Edmonton'}),10);}catch(e){}
+  var t='';days.forEach(function(d){var h=hrs[d];t+='<tr'+(d===today?' class="today"':'')+'><td>'+d+'</td><td>'+(h?f(h[0])+' – '+f(h[1]):'Closed')+'</td></tr>';});
+  document.getElementById('hrs').innerHTML=t;
+  var h=hrs[today];
+  document.getElementById('open').textContent=(h&&hour>=h[0]&&hour<h[1])?'Open now · closes at '+f(h[1]):'Closed right now';
+})();
+</script>
+</body>
+</html>

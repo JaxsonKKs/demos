@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Brindle Burger Co. (concept demo)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F4F7F1;--surface:#FFFFFF;--ink:#16251A;--muted:#4D6252;--accent:#C8321F;--line:#D3DECD;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){color-scheme:dark;--bg:#101A14;--surface:#18261D;--ink:#F1F5EC;--muted:#A5B8A8;--line:#2B3F31;}
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);height:100%}
+*{box-sizing:border-box}
+body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font-family:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}
+.white{background:#17120F;--ink:#F4EDE4;--muted:#BFB2A3;color:#F4EDE4}
+.demo{background:#F2B705;color:#17120F;font-size:.82rem;text-align:center;padding:.45rem 1rem}
+.bar{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.25rem}
+.brand{font-family:"Bowlby One",Impact,"Arial Black",sans-serif;font-size:1.25rem}
+.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;padding:.8rem 1.4rem;border-radius:.5rem}
+button.btn{border:0;cursor:pointer;font:inherit;font-weight:700;background:#F4EDE4;color:#17120F;margin-left:.5rem}
+.btn:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid #F2B705;outline-offset:3px}
+h1,h2{font-family:"Bowlby One",Impact,"Arial Black",sans-serif;font-weight:400;margin:0}
+.wrap{height:340vh;position:relative}
+.stage{position:sticky;top:env(safe-area-inset-top,0px);height:calc(100vh - env(safe-area-inset-top,0px));height:calc(100svh - env(safe-area-inset-top,0px));display:grid;grid-template-rows:auto 1fr;gap:.5rem;padding:0 1.25rem;background:radial-gradient(ellipse at 68% 55%,#43301F 0,#17120F 62%)}
+.copy h1{font-size:clamp(2.2rem,7vw,4.6rem);line-height:.98}
+.copy p{max-width:30rem;color:var(--muted);margin:.75rem 0 1.1rem}
+.art{min-height:0}
+.art svg{width:100%;height:100%;display:block}
+.lbl text{fill:#F4EDE4;font-family:"DM Sans",system-ui,sans-serif}
+.lbl .n{font-size:25px;font-weight:700}
+.lbl .d{font-size:18px;fill:#BFB2A3}
+.lbl line{stroke:#8F8272;stroke-width:2}
+@media(min-width:860px){
+  .stage{grid-template-rows:none;grid-template-columns:1fr 1.15fr;align-items:center;max-width:72rem;margin:0 auto;gap:2rem}
+}
+section.pad{padding:4rem 1.25rem}
+.in{max-width:44rem;margin:0 auto}
+h2{font-size:2.2rem;line-height:1.05;margin-bottom:1.5rem}
+.item{display:flex;justify-content:space-between;gap:1rem;padding:.9rem 0;border-bottom:1px solid var(--line)}
+.item b{display:block}
+.item small{color:var(--muted)}
+.item span{font-weight:700;white-space:nowrap}
+.visit{background:var(--surface);border-top:1px solid var(--line)}
+table{border-collapse:collapse;margin:1rem 0}
+td{padding:.2rem 1.5rem .2rem 0}
+footer{padding:1.5rem 1.25rem;text-align:center;color:var(--muted);font-size:.85rem}
+footer a{color:inherit}
+</style>
+</head>
+<body>
+<div class="white">
+<div class="demo">Concept demo by Mainfront with a made-up restaurant. Names, prices, and address are placeholders.</div>
+<div class="bar"><span class="brand">Brindle Burger Co.</span><a class="btn" href="#visit">Order pickup</a></div>
+
+<div class="wrap" id="wrap">
+  <div class="stage">
+    <div class="copy">
+      <h1>The Brindle Double</h1>
+      <p>Two smashed patties, melted cheddar, and everything else you can’t see from the outside. Scroll to take it apart.</p>
+      <a class="btn" href="#menu">See the menu</a><button class="btn" id="tear" type="button">Take it apart</button>
+    </div>
+    <div class="art">
+      <svg viewBox="0 0 640 780" role="img" aria-label="A burger that separates into layers as you scroll: bun, sauce, lettuce, tomato, cheese, patty, and bottom bun">
+        <defs>
+          <radialGradient id="bun" cx=".38" cy=".2" r=".95"><stop offset="0" stop-color="#F6BE6E"/><stop offset=".5" stop-color="#DB8C33"/><stop offset="1" stop-color="#93501A"/></radialGradient>
+          <linearGradient id="bunB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EDAA52"/><stop offset="1" stop-color="#9A5A1E"/></linearGradient>
+          <linearGradient id="pat" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#85503A"/><stop offset=".55" stop-color="#4C291A"/><stop offset="1" stop-color="#2A150B"/></linearGradient>
+          <linearGradient id="chz" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFDB5E"/><stop offset="1" stop-color="#E5A00F"/></linearGradient>
+          <radialGradient id="tom" cx=".5" cy=".35" r=".75"><stop offset="0" stop-color="#F4695C"/><stop offset=".7" stop-color="#CE3024"/><stop offset="1" stop-color="#9A1D14"/></radialGradient>
+          <linearGradient id="let" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9BDB68"/><stop offset="1" stop-color="#4C9631"/></linearGradient>
+          <linearGradient id="sau" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F0713F"/><stop offset="1" stop-color="#C73F18"/></linearGradient>
+          <filter id="sh" x="-15%" y="-40%" width="130%" height="200%"><feDropShadow dx="0" dy="9" stdDeviation="6" flood-color="#2A1A0A" flood-opacity=".28"/></filter>
+          <filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="4" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 .08  0 0 0 0 .04  0 0 0 0 .02  0 0 0 1.8 -.7" result="d"/><feComposite in="d" in2="SourceGraphic" operator="in"/></filter>
+        </defs>
+
+        <g class="layer" filter="url(#sh)">
+          <path d="M-158 24C-162-62-92-112 0-112S162-62 158 24C156 36 100 42 0 42S-156 36-158 24Z" fill="url(#bun)"/>
+          <ellipse cx="-55" cy="-76" rx="72" ry="15" fill="rgba(255,240,205,.34)" transform="rotate(-14 -55 -76)"/>
+          <path d="M-156 24Q0 40 156 24L154 32Q0 50-154 32Z" fill="rgba(70,32,6,.4)"/>
+          <g fill="#F8EBC8" stroke="rgba(110,70,20,.45)" stroke-width="1"><ellipse cx="-70" cy="-58" rx="9" ry="4.5" transform="rotate(-30 -70 -58)"/><ellipse cx="-20" cy="-82" rx="9" ry="4.5" transform="rotate(10 -20 -82)"/><ellipse cx="35" cy="-74" rx="9" ry="4.5" transform="rotate(35 35 -74)"/><ellipse cx="85" cy="-44" rx="9" ry="4.5" transform="rotate(50 85 -44)"/><ellipse cx="-108" cy="-24" rx="9" ry="4.5" transform="rotate(-50 -108 -24)"/><ellipse cx="5" cy="-44" rx="9" ry="4.5" transform="rotate(-10 5 -44)"/><ellipse cx="62" cy="-14" rx="9" ry="4.5" transform="rotate(20 62 -14)"/><ellipse cx="-55" cy="-10" rx="9" ry="4.5" transform="rotate(-15 -55 -10)"/><ellipse cx="-30" cy="-60" rx="9" ry="4.5" transform="rotate(25 -30 -60)"/><ellipse cx="110" cy="-12" rx="9" ry="4.5" transform="rotate(60 110 -12)"/></g>
+        </g>
+        <g class="layer" filter="url(#sh)">
+          <path d="M-168 2q22-30 44 0t44 0t44 0t44 0t44 0t44 0t44 0t44 0l0 14q-22 18-44 0t-44 0t-44 0t-44 0t-44 0t-44 0t-44 0t-44 0z" fill="#3F8A2B"/>
+          <path d="M-160-4q20-22 40 0t40 0t40 0t40 0t40 0t40 0t40 0t40 0l0 12q-20 14-40 0t-40 0t-40 0t-40 0t-40 0t-40 0t-40 0t-40 0z" fill="url(#let)" stroke="#3F8A2B" stroke-width="1.5"/>
+          <g fill="none" stroke="rgba(230,255,200,.6)" stroke-width="2" stroke-linecap="round"><path d="M-130-6q8 6 4 14"/><path d="M-50-8q8 6 4 14"/><path d="M30-8q8 6 4 14"/><path d="M110-6q8 6 4 14"/></g>
+          <path d="M-106 2v10a6 6 0 0 0 12 0v-10zM-28 2v14a6 6 0 0 0 12 0v-14zM54 2v8a6 6 0 0 0 12 0v-8zM112 2v12a6 6 0 0 0 12 0v-12z" fill="url(#sau)"/>
+          <path d="M-146-6C-120-14-100 0-70-6S-20-14 10-6S60 2 90-6S130-12 146-6L146 4C120 10 100-2 70 4S20 12-10 4S-60-2-90 4S-130 10-146 4Z" fill="url(#sau)"/>
+          <path d="M-120-6C-80-10-40-4 0-6" fill="none" stroke="rgba(255,225,200,.65)" stroke-width="2.5" stroke-linecap="round"/>
+        </g>
+        <g class="layer" filter="url(#sh)">
+          <g stroke="#8E1A12" stroke-width="2"><ellipse cx="-78" cy="0" rx="68" ry="14" fill="url(#tom)"/><ellipse cx="0" cy="2" rx="68" ry="14" fill="url(#tom)"/><ellipse cx="78" cy="0" rx="68" ry="14" fill="url(#tom)"/></g>
+          <g fill="rgba(255,150,130,.45)"><ellipse cx="-78" cy="-1" rx="48" ry="7"/><ellipse cx="0" cy="1" rx="48" ry="7"/><ellipse cx="78" cy="-1" rx="48" ry="7"/></g>
+          <g fill="#F7DDA0"><circle cx="-92" cy="-1" r="2.5"/><circle cx="-66" cy="1" r="2.5"/><circle cx="-14" cy="2" r="2.5"/><circle cx="14" cy="0" r="2.5"/><circle cx="64" cy="0" r="2.5"/><circle cx="92" cy="1" r="2.5"/></g>
+        </g>
+        <g class="layer" filter="url(#sh)">
+          <path d="M-158-8L158-8L158 7L108 7L94 36L72 7L-40 7L-64 30L-84 7L-158 7Z" fill="url(#chz)" stroke="#C78A0A" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M-145-3L140-3" stroke="rgba(255,250,210,.8)" stroke-width="3" stroke-linecap="round"/>
+        </g>
+        <g class="layer" filter="url(#sh)">
+          <rect x="-158" y="-34" width="316" height="34" rx="17" fill="url(#pat)"/>
+          <rect x="-150" y="2" width="304" height="34" rx="17" fill="url(#pat)"/>
+          <rect x="-158" y="-34" width="316" height="34" rx="17" fill="#000" filter="url(#grain)"/>
+          <rect x="-150" y="2" width="304" height="34" rx="17" fill="#000" filter="url(#grain)"/>
+          <g stroke="rgba(255,190,140,.35)" stroke-width="3" stroke-linecap="round"><path d="M-120-26h46"/><path d="M-20-28h60"/><path d="M80-26h50"/><path d="M-100 10h50"/><path d="M0 8h70"/></g>
+        </g>
+        <g class="layer" filter="url(#sh)">
+          <path d="M-155-14Q0 8 155-14C155 32 105 48 0 48C-105 48-155 32-155-14Z" fill="url(#bunB)"/>
+          <path d="M-130 24Q0 44 130 24" fill="none" stroke="rgba(255,226,170,.5)" stroke-width="4" stroke-linecap="round"/>
+        </g>
+
+        <g class="lbl"><line x1="356" y1="140" x2="372" y2="140"/><text class="n" x="382" y="138">Sesame bun</text><text class="d" x="382" y="162">Baked fresh every morning</text></g>
+        <g class="lbl"><line x1="356" y1="250" x2="372" y2="250"/><text class="n" x="382" y="248">Lettuce and sauce</text><text class="d" x="382" y="272">Crisp with smoky drizzle</text></g>
+        <g class="lbl"><line x1="356" y1="360" x2="372" y2="360"/><text class="n" x="382" y="358">Ripe tomato</text><text class="d" x="382" y="382">Sliced thick, never mushy</text></g>
+        <g class="lbl"><line x1="356" y1="470" x2="372" y2="470"/><text class="n" x="382" y="468">Melted cheddar</text><text class="d" x="382" y="492">Draped while it’s hot</text></g>
+        <g class="lbl"><line x1="356" y1="580" x2="372" y2="580"/><text class="n" x="382" y="578">Double smashed patty</text><text class="d" x="382" y="602">Seared crust, juicy inside</text></g>
+        <g class="lbl"><line x1="356" y1="690" x2="372" y2="690"/><text class="n" x="382" y="688">Buttered bottom bun</text><text class="d" x="382" y="712">Griddled until golden</text></g>
+      </svg>
+    </div>
+  </div>
+</div>
+</div>
+
+<section class="pad" id="menu">
+  <div class="in">
+    <h2>The short menu</h2>
+    <div class="item"><div><b>The Brindle Double</b><small>Two smashed patties, cheddar, house sauce</small></div><span>$14</span></div>
+    <div class="item"><div><b>The Single</b><small>One patty, same toppings</small></div><span>$11</span></div>
+    <div class="item"><div><b>Smoke &amp; Bacon</b><small>Bacon, cheddar, smoky sauce</small></div><span>$15</span></div>
+    <div class="item"><div><b>Veggie Smash</b><small>Crispy bean patty, lettuce, tomato</small></div><span>$12</span></div>
+    <div class="item"><div><b>Fries</b><small>Salted, cut in house</small></div><span>$5</span></div>
+    <div class="item"><div><b>Thick shake</b><small>Vanilla, chocolate, or strawberry</small></div><span>$7</span></div>
+  </div>
+</section>
+
+<section class="pad visit" id="visit">
+  <div class="in">
+    <h2>Come hungry</h2>
+    <p>123 Main Street, Anytown<br>555-0123</p>
+    <table>
+      <tr><td>Mon to Thu</td><td>11 am – 9 pm</td></tr>
+      <tr><td>Fri and Sat</td><td>11 am – 11 pm</td></tr>
+      <tr><td>Sunday</td><td>12 pm – 8 pm</td></tr>
+    </table>
+    <a class="btn" href="#visit">Call to order</a>
+  </div>
+</section>
+
+<footer>Brindle Burger Co. is a fictional concept demo. Website by <a href="../mainfront/">Mainfront</a>.</footer>
+
+<script>
+(function(){
+  var asm=[351,396,430,450,487,520];
+  var exp=[140,250,360,470,580,690];
+  var layers=[].slice.call(document.querySelectorAll('.layer'));
+  var labels=[].slice.call(document.querySelectorAll('.lbl'));
+  var wrap=document.getElementById('wrap');
+  function clamp(x){return Math.max(0,Math.min(1,x));}
+  function ease(t){return t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;}
+  var cur=0,tw=null;
+  var tb=document.getElementById('tear');
+  function draw(p){
+    cur=p;var e=ease(p);
+    layers.forEach(function(g,i){g.setAttribute('transform','translate(190 '+(asm[i]+(exp[i]-asm[i])*e)+')');});
+    labels.forEach(function(l,i){l.style.opacity=clamp((p-(0.3+i*0.08))/0.12);});
+    if(tb){tb.textContent=p>0.5?'Put it back together':'Take it apart';}
+  }
+  function update(){
+    var r=wrap.getBoundingClientRect();
+    var span=r.height-window.innerHeight;
+    draw(span>0?clamp(-r.top/span):0);
+  }
+  function tween(to){
+    if(tw)cancelAnimationFrame(tw);
+    var from=cur,t0=null,dur=1400;
+    function step(ts){if(t0===null)t0=ts;var k=clamp((ts-t0)/dur);draw(from+(to-from)*k);tw=k<1?requestAnimationFrame(step):null;}
+    tw=requestAnimationFrame(step);
+  }
+  tb.addEventListener('click',function(){tween(cur<0.5?1:0);});
+  var busy=false;
+  window.addEventListener('scroll',function(){
+    if(busy)return;busy=true;
+    requestAnimationFrame(function(){update();busy=false;});
+  },{passive:true});
+  window.addEventListener('resize',update);
+  update();
+})();
+</script>
+</body>
+</html>

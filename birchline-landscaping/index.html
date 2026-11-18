@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Birchline Landscaping (concept demo)</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --sage:#87A96B;--walnut:#5A3E2B;--amber:#D5851F;
+  --bg:#F2F5EA;--surface:#FFFFFF;--tint:#E3EBD6;--ink:#2B1D14;--muted:#5E5446;--line:#CBD6B8;
+  --band:#87A96B;--band-ink:#1F150E;--btn:#D5851F;--btn-ink:#241507;--accent-text:#8A4F08;
+  --head:'Young Serif',Georgia,serif;--body:'Figtree',system-ui,-apple-system,'Segoe UI',sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--bg:#1B1712;--surface:#262017;--tint:#2F2A1E;--ink:#EEF1E3;--muted:#B9B8A4;--line:#41392B;--band:#4B6338;--band-ink:#F2F5EA;--accent-text:#EBA347;color-scheme:dark}
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);background-image:radial-gradient(60rem 30rem at 85% -5%,rgba(213,133,31,.16),transparent 70%),radial-gradient(50rem 30rem at -10% 20%,rgba(135,169,107,.22),transparent 70%);background-repeat:no-repeat;color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+.wrap{max-width:68rem;margin:0 auto}
+h1,h2,h3{font-family:var(--head);font-weight:400;line-height:1.12;margin:0;text-wrap:balance}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+.demo{background:var(--walnut);color:#F6EFE6;font-size:.82rem;text-align:center;padding:.45rem 1rem;margin-inline:calc(-1 * max(16px,env(safe-area-inset-left,0px)))}
+nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:1rem;flex-wrap:wrap}
+.logo{font-family:var(--head);font-size:1.35rem;text-decoration:none;display:flex;align-items:center;gap:.55rem}
+.links{display:flex;gap:1.3rem;flex-wrap:wrap;font-weight:500;font-size:.95rem}
+.links a{text-decoration:none;color:var(--muted)}
+.links a:hover{color:var(--ink)}
+.btn{display:inline-block;background:var(--btn);color:var(--btn-ink);font:inherit;font-weight:700;border:0;border-radius:.4rem;padding:.8rem 1.3rem;text-decoration:none;cursor:pointer}
+.btn:hover{filter:brightness(1.06)}
+.btn.ghost{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:2rem;align-items:center;padding-block:2.5rem 3.5rem}
+.hero>*{min-width:0}
+.eyebrow{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--accent-text);margin-bottom:.9rem}
+.hero h1{font-size:clamp(2.2rem,5.2vw,3.7rem);letter-spacing:-.01em}
+.hero h1 em{font-style:normal;color:var(--accent-text)}
+.hero p.lead{font-size:1.1rem;color:var(--muted);max-width:34rem;margin-block:1.1rem 1.6rem}
+.cta{display:flex;gap:.8rem;flex-wrap:wrap}
+.art{border-radius:1.2rem;overflow:hidden;border:1px solid var(--line);background:var(--tint);box-shadow:0 1.2rem 2.4rem -1rem rgba(60,40,20,.35);transform:rotate(1.2deg)}
+.art svg{display:block;width:100%;height:auto}
+.facts{display:flex;gap:1.6rem;flex-wrap:wrap;margin-top:1.8rem;font-size:.9rem;color:var(--muted)}
+.facts b{display:block;color:var(--ink);font-size:1rem}
+.band{background-image:repeating-linear-gradient(115deg,rgba(255,255,255,.07) 0 14px,transparent 14px 28px);background-color:var(--band);color:var(--band-ink);margin-inline:calc(-1 * max(16px,env(safe-area-inset-left,0px)));padding-inline:max(16px,env(safe-area-inset-left,0px));padding-block:3rem;border-block:4px solid var(--walnut)}
+.band .wrap{display:grid;gap:1.6rem}
+.band h2{font-size:clamp(1.6rem,3.4vw,2.2rem)}
+.cal{display:grid;grid-template-columns:repeat(12,1fr);gap:.25rem}
+.cal div{font-size:.72rem;font-weight:700;text-align:center;padding:.5rem 0;border-radius:.3rem;background:rgba(255,255,255,.28)}
+.cal .s{background:var(--walnut);color:#F6EFE6}
+.cal .w{background:var(--amber);color:#241507}
+.key{display:flex;gap:1.2rem;flex-wrap:wrap;font-size:.88rem;font-weight:600}
+.key i{display:inline-block;width:.8rem;height:.8rem;border-radius:.2rem;margin-right:.4rem;vertical-align:-.1rem}
+section.sec{padding-block:3.5rem}
+.sec h2{font-size:clamp(1.6rem,3.4vw,2.2rem);margin-bottom:.6rem}
+.sec .sub{color:var(--muted);max-width:36rem;margin-bottom:2rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1rem}
+.svc{background:var(--surface);border:1px solid var(--line);border-radius:.9rem;padding:1.4rem;transition:transform .2s,box-shadow .2s,border-color .2s}
+.svc:hover{transform:translateY(-4px);border-color:var(--sage);box-shadow:0 .9rem 1.6rem -.9rem rgba(60,40,20,.4)}
+.ico{width:3rem;height:3rem;border-radius:.8rem;background:var(--tint);display:grid;place-items:center;margin-bottom:.9rem;color:var(--walnut)}
+.ico svg{width:1.7rem;height:1.7rem}
+.ico.w{background:var(--amber);color:#241507}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .ico{color:var(--sage)}:root:not([data-theme="light"]) .ico.w{color:#241507}}
+.svc h3{font-size:1.2rem;margin-bottom:.4rem}
+.svc p{color:var(--muted);font-size:.95rem}
+.svc .when{display:inline-block;margin-top:.8rem;font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-text)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem}
+.split>*{min-width:0}
+.area ul{list-style:none;margin:1rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:.5rem}
+.area li{background:var(--tint);border:1px solid var(--line);border-radius:999px;padding:.35rem .9rem;font-weight:500;font-size:.92rem}
+.quote{background:var(--surface);border:1px solid var(--line);border-radius:.9rem;padding:1.5rem}
+.quote h2{font-size:1.6rem}
+form{display:grid;gap:.9rem;margin-top:1rem}
+label{font-weight:600;font-size:.88rem;display:grid;gap:.3rem}
+input,select,textarea{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:.4rem;padding:.65rem .75rem;width:100%}
+textarea{min-height:5rem;resize:vertical}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+.msg{font-weight:600;color:var(--accent-text);min-height:1.4em}
+footer{border-top:1px solid var(--line);padding-block:2rem 3rem;color:var(--muted);font-size:.9rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+footer b{color:var(--ink)}
+@media (max-width:48rem){
+  .hero,.split{grid-template-columns:1fr}
+  .two{grid-template-columns:1fr}
+  .cal div{font-size:.62rem}
+}
+</style>
+</head>
+<body>
+<div class="demo">Concept demo by Mainfront, made to show what a local business site could look like. Birchline Landscaping is a made-up business.</div>
+
+<div class="wrap">
+  <nav>
+    <a class="logo" href="#top" id="top">
+      <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><rect width="30" height="30" rx="7" fill="#5A3E2B"/><path d="M15 6 L22 17 H17 L21 24 H9 L13 17 H8 Z" fill="#87A96B"/></svg>
+      Birchline Landscaping
+    </a>
+    <div class="links"><a href="#services">Services</a><a href="#seasons">Seasons</a><a href="#area">Service area</a><a href="#quote">Free quote</a></div>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <p class="eyebrow">Stony Plain &middot; Spruce Grove &middot; Parkland County</p>
+      <h1>Yards built for a prairie summer and an <em>Alberta winter.</em></h1>
+      <p class="lead">Lawn care, planting beds, retaining walls and snow removal from one local crew, so your property looks after itself in every season.</p>
+      <div class="cta"><a class="btn" href="#quote">Get a free quote</a><a class="btn ghost" href="#services">See our services</a></div>
+      <div class="facts"><div><b>Free on-site quotes</b>Within 2 business days</div><div><b>Fully insured</b>Residential and commercial</div><div><b>Seasonal plans</b>One crew all year</div></div>
+    </div>
+    <div class="art">
+      <svg viewBox="0 0 480 440" role="img" aria-label="Illustration of a landscaped yard with striped lawn, birch trees, spruce, flower bed and setting sun">
+        <defs>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6D9A6"/><stop offset=".55" stop-color="#F3E7C4"/><stop offset="1" stop-color="#E3EBD6"/></linearGradient>
+          <radialGradient id="glow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#FFE3A8" stop-opacity=".95"/><stop offset="1" stop-color="#FFE3A8" stop-opacity="0"/></radialGradient>
+        </defs>
+        <rect width="480" height="440" fill="url(#sky)"/>
+        <circle cx="350" cy="140" r="110" fill="url(#glow)"/>
+        <circle cx="350" cy="140" r="46" fill="#D5851F"/>
+        <ellipse cx="110" cy="80" rx="46" ry="12" fill="#FFFFFF" fill-opacity=".7"/><ellipse cx="140" cy="68" rx="30" ry="10" fill="#FFFFFF" fill-opacity=".7"/>
+        <ellipse cx="420" cy="60" rx="34" ry="9" fill="#FFFFFF" fill-opacity=".6"/>
+        <path d="M0 230 Q90 175 190 215 T380 205 T480 220 V440 H0 Z" fill="#B9CFA2"/>
+        <path d="M0 262 Q140 205 280 255 T480 245 V440 H0 Z" fill="#9DBC83"/>
+        <g fill="#4F6E3C"><path d="M395 170 l16 40 h-9 l14 32 h-42 l14-32 h-9 z"/><path d="M432 190 l13 32 h-7 l11 26 h-34 l11-26 h-7 z"/></g>
+        <rect x="402" y="242" width="6" height="12" fill="#5A3E2B"/><rect x="436" y="248" width="5" height="10" fill="#5A3E2B"/>
+        <path d="M0 300 Q160 262 330 300 T480 292 V440 H0 Z" fill="#87A96B"/>
+        <g fill="#7C9E60"><path d="M0 326 Q160 290 330 326 T480 318 V338 Q330 346 160 308 T0 346 Z"/><path d="M0 366 Q160 330 330 366 T480 358 V378 Q330 386 160 348 T0 386 Z"/></g>
+        <path d="M0 400 Q160 372 330 400 T480 394 V440 H0 Z" fill="#5E7F47"/>
+        <g><rect x="60" y="190" width="10" height="120" rx="3" fill="#F6F1E6"/><rect x="62" y="218" width="6" height="3" fill="#5A3E2B"/><rect x="61" y="254" width="7" height="3" fill="#5A3E2B"/><rect x="62" y="284" width="6" height="3" fill="#5A3E2B"/>
+        <circle cx="66" cy="170" r="36" fill="#6F9455"/><circle cx="42" cy="192" r="24" fill="#87A96B"/><circle cx="92" cy="194" r="26" fill="#5E7F47"/></g>
+        <g><rect x="140" y="226" width="8" height="84" rx="3" fill="#F6F1E6"/><rect x="141" y="252" width="5" height="3" fill="#5A3E2B"/><rect x="142" y="280" width="5" height="3" fill="#5A3E2B"/>
+        <circle cx="144" cy="214" r="26" fill="#87A96B"/><circle cx="128" cy="230" r="17" fill="#6F9455"/><circle cx="162" cy="232" r="18" fill="#5E7F47"/></g>
+        <rect x="190" y="362" width="250" height="14" rx="3" fill="#5A3E2B"/>
+        <rect x="204" y="346" width="222" height="16" rx="3" fill="#7A5740"/>
+        <rect x="218" y="330" width="194" height="16" rx="3" fill="#5A3E2B"/>
+        <g><circle cx="226" cy="322" r="7" fill="#D5851F"/><circle cx="246" cy="326" r="6" fill="#F2B24C"/><circle cx="266" cy="320" r="7" fill="#D5851F"/><circle cx="288" cy="326" r="6" fill="#F6F1E6"/><circle cx="308" cy="321" r="7" fill="#D5851F"/><circle cx="330" cy="326" r="6" fill="#F2B24C"/><circle cx="352" cy="320" r="7" fill="#F6F1E6"/><circle cx="374" cy="326" r="6" fill="#D5851F"/><circle cx="396" cy="321" r="7" fill="#F2B24C"/></g>
+        <g fill="#4F6E3C"><ellipse cx="236" cy="330" rx="12" ry="5"/><ellipse cx="278" cy="331" rx="12" ry="5"/><ellipse cx="320" cy="330" rx="12" ry="5"/><ellipse cx="362" cy="331" rx="12" ry="5"/><ellipse cx="404" cy="330" rx="10" ry="5"/></g>
+        <g stroke="#F6F1E6" stroke-width="2.5" stroke-linecap="round" fill="none" stroke-opacity=".9"><path d="M20 410 h60"/><path d="M96 410 h20"/></g>
+      </svg>
+    </div>
+  </header>
+</div>
+
+<div class="band" id="seasons">
+  <div class="wrap">
+    <h2>One crew, twelve months</h2>
+    <div class="cal" role="img" aria-label="Service calendar: snow removal January to March and November to December, lawn and garden April to October">
+      <div class="w">JAN</div><div class="w">FEB</div><div class="w">MAR</div><div class="s">APR</div><div class="s">MAY</div><div class="s">JUN</div><div class="s">JUL</div><div class="s">AUG</div><div class="s">SEP</div><div class="s">OCT</div><div class="w">NOV</div><div class="w">DEC</div>
+    </div>
+    <div class="key"><span><i style="background:var(--walnut)"></i>Lawn, garden and hardscape</span><span><i style="background:var(--amber)"></i>Snow removal and ice control</span></div>
+  </div>
+</div>
+
+<div class="wrap">
+  <section class="sec" id="services">
+    <h2>What we take care of</h2>
+    <p class="sub">Pick a single job or put the whole yard on a plan. Every quote is written down before we start.</p>
+    <div class="grid">
+      <article class="svc"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18"/><path d="M6 20c0-5 1-9 2-12M10 20c0-6 1-11 3-15M14 20c0-4 1-8 4-10M18 20c0-3 .5-5 2-7"/></svg></div><h3>Lawn care</h3><p>Weekly mowing, edging, aeration and fertilizing timed for our short growing season.</p><span class="when">May to October</span></article>
+      <article class="svc"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c8 0 14-5 14-14-9 0-14 6-14 14z"/><path d="M5 19c2-4 5-7 9-9"/></svg></div><h3>Spring and fall cleanup</h3><p>Dethatching, leaf removal, bed cleanup and a final cut before the first hard frost.</p><span class="when">April and October</span></article>
+      <article class="svc"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-9"/><path d="M12 12c0-4-2-6-6-6 0 4 2 6 6 6z"/><path d="M12 14c0-3 2-5 6-5 0 3-2 5-6 5z"/><path d="M6 21h12"/></svg></div><h3>Planting beds</h3><p>Hardy perennials, shrubs and mulch chosen for zone 3 so they come back every year.</p><span class="when">May to September</span></article>
+      <article class="svc"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 10h18M3 15h18M9 5v5M15 10v5M9 15v4"/></svg></div><h3>Retaining walls and patios</h3><p>Paving stone, block and timber work built on a compacted base that handles frost heave.</p><span class="when">June to September</span></article>
+      <article class="svc"><div class="ico w" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5l-15.6 9"/><path d="M9.5 4.5 12 7l2.5-2.5M9.5 19.5 12 17l2.5 2.5"/></svg></div><h3>Snow removal</h3><p>Driveways, walks and small commercial lots cleared after each snowfall, with ice control on request.</p><span class="when">November to April</span></article>
+      <article class="svc"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20 20 4"/><path d="M14 4h6v6"/><rect x="4" y="12" width="8" height="8" rx="1"/></svg></div><h3>Yard design</h3><p>A scaled plan for new builds and tired yards, with a planting list and a staged budget.</p><span class="when">All year</span></article>
+    </div>
+  </section>
+
+  <section class="sec split" id="area">
+    <div class="area">
+      <h2>Where we work</h2>
+      <p class="sub" style="margin-bottom:0">We keep our routes tight so crews arrive on the same day each week.</p>
+      <ul><li>Stony Plain</li><li>Spruce Grove</li><li>Parkland County</li><li>Wabamun</li><li>Devon</li><li>West Edmonton</li></ul>
+    </div>
+    <div class="quote" id="quote">
+      <h2>Get a free quote</h2>
+      <p style="color:var(--muted);margin-top:.4rem">Tell us about your yard and we will book a time to walk it with you.</p>
+      <form id="qf">
+        <div class="two">
+          <label for="qn">Your name<input id="qn" autocomplete="name" required></label>
+          <label for="qp">Phone<input id="qp" type="tel" autocomplete="tel" required></label>
+        </div>
+        <label for="qs">What do you need?
+          <select id="qs"><option>Lawn care plan</option><option>Spring or fall cleanup</option><option>Planting beds</option><option>Retaining wall or patio</option><option>Snow removal</option><option>Yard design</option></select>
+        </label>
+        <label for="qd">Anything we should know?<textarea id="qd" placeholder="Corner lot, front and back yard, gate on the left side..."></textarea></label>
+        <button class="btn" type="submit">Request my quote</button>
+        <p class="msg" id="qm" role="status"></p>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div><b>Birchline Landscaping</b><br>Stony Plain, Alberta<br>Phone: (780) 555-0142 &middot; hello@birchline.example</div>
+    <div>Mon to Fri 7 AM to 6 PM<br>Sat 8 AM to 2 PM<br>Website by <a href="../mainfront/">Mainfront</a></div>
+  </footer>
+</div>
+
+<script>
+document.getElementById('qf').addEventListener('submit',function(e){
+  e.preventDefault();
+  document.getElementById('qm').textContent='Demo only: nothing was sent. On the live site this goes straight to the owner.';
+});
+</script>
+</body>
+</html>
