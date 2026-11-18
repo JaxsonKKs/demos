@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Barber C.A.R.E. | Barber on 50 Street, Stony Plain</title>
+<meta name="description" content="Barber C.A.R.E., 5009 50 Street, Stony Plain. Open Tuesday to Friday, late on Thursdays. Call to book.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Archivo+Narrow:wght@500;700&family=Libre+Franklin:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Concept: the shop window. Gilded sign-painter lettering on dark glass, a spinning pole,
+   a hanging OPEN/CLOSED sign that tells the truth, and a felt letterboard for the menu. */
+:root{
+  --glass:#0B0D10; --glass-2:#171B21; --frame:#0A0A0A; --frame-2:#1A1A1A;
+  --gold:#D4A84B; --gold-hi:#F6DE97; --gold-lo:#8A6421;
+  --cream:#F4F4F1; --cream-2:#E3E4E1; --ink:#111214; --soft:#55585E;
+  --red:#B3261E; --blue:#1E3A6B; --felt:#151515;
+  --slab:'Alfa Slab One',Rockwell,Georgia,serif;
+  --script:'Yesteryear',cursive;
+  --narrow:'Archivo Narrow','Arial Narrow',sans-serif;
+  --body:'Libre Franklin',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+*{box-sizing:border-box}
+html{background:var(--frame)}
+body{margin:0;font:16px/1.55 var(--body);color:var(--ink);background:var(--cream);padding-bottom:4.6rem}
+a{color:inherit}
+@media(min-width:56rem){body{padding-bottom:0}}
+
+.concept{background:#000;color:#CFC6B4;font-size:.8rem;text-align:center;padding:.5rem 1rem}
+.concept a{color:#fff;font-weight:600}
+
+/* ---------- THE WINDOW ---------- */
+.storefront{background:var(--frame);padding:0 14px;position:relative}
+.awning{height:22px;margin:0 -14px 14px;border-block:3px solid #C9CDD2;
+  background:repeating-linear-gradient(-45deg,var(--red) 0 16px,#fff 16px 26px,var(--blue) 26px 42px,#fff 42px 52px);
+  background-size:73.5px 100%;animation:slide 3s linear infinite}
+@keyframes slide{to{background-position:73.5px 0}}
+.window{max-width:70rem;margin:0 auto;display:grid;grid-template-columns:1fr;gap:14px}
+@media(min-width:56rem){.window{grid-template-columns:1fr 15rem}}
+.pane{position:relative;background:
+   linear-gradient(115deg,rgba(255,255,255,.07) 0 18%,transparent 18% 23%,rgba(255,255,255,.04) 23% 27%,transparent 27%),
+   radial-gradient(120% 90% at 50% 0%,var(--glass-2),var(--glass));
+  border:6px solid #9AA0A7;outline:2px solid var(--gold-lo);outline-offset:-12px;
+  padding:2rem 1rem 2.2rem;text-align:center;color:var(--cream);overflow:hidden}
+.arch{display:block;width:100%;max-width:40rem;margin:0 auto -1.2rem}
+.arch text{font-family:var(--slab);font-size:96px;letter-spacing:6px;fill:url(#gilt);stroke:#3A0F0B;stroke-width:5px;paint-order:stroke;filter:url(#shade)}
+.care{font-family:var(--slab);font-weight:400;font-size:clamp(2.6rem,9vw,5.2rem);line-height:1;margin:0;letter-spacing:.06em;
+  color:var(--gold);text-shadow:2px 2px 0 #3A0F0B,4px 4px 0 rgba(0,0,0,.35)}
+@supports (-webkit-background-clip:text){
+  .care{background:linear-gradient(180deg,var(--gold-hi) 0%,var(--gold) 45%,var(--gold-lo) 55%,var(--gold) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none;filter:drop-shadow(2px 2px 0 #3A0F0B) drop-shadow(3px 3px 0 rgba(0,0,0,.4))}
+}
+.est{font-family:var(--narrow);font-weight:700;letter-spacing:.18em;font-size:clamp(.95rem,2.6vw,1.2rem);color:var(--cream);margin:.9rem 0 0}
+.rule{width:min(18rem,70%);height:2px;margin:1rem auto;background:var(--gold);position:relative}
+.rule::before,.rule::after{content:"";position:absolute;top:-4px;width:10px;height:10px;background:var(--gold);transform:rotate(45deg)}
+.rule::before{left:-6px}.rule::after{right:-6px}
+.services-paint{font-family:var(--narrow);font-weight:700;letter-spacing:.32em;font-size:clamp(.85rem,2.4vw,1.05rem);color:var(--gold-hi);margin:0}
+.paint-btns{display:flex;justify-content:center;flex-wrap:wrap;gap:.7rem;margin-top:1.6rem}
+.pbtn{font-family:var(--narrow);font-weight:700;font-size:1.05rem;letter-spacing:.08em;text-decoration:none;padding:.8rem 1.3rem;border:2px solid var(--gold);color:var(--gold-hi);transition:background .15s,color .15s}
+.pbtn.solid{background:var(--gold);color:#1A110B}
+.pbtn:hover{background:var(--gold-hi);color:#1A110B;border-color:var(--gold-hi)}
+.pbtn:focus-visible{outline:3px solid var(--cream);outline-offset:3px}
+.num{font-family:var(--narrow);font-weight:700;color:var(--cream);opacity:.75;font-size:.95rem;margin-top:1rem;letter-spacing:.05em}
+
+/* Hanging sign: tells the truth, live */
+.hang{position:absolute;top:0;right:1.4rem;width:9.5rem;transform-origin:50% 0;animation:swing 2.6s ease-out 1}
+.hang::before,.hang::after{content:"";position:absolute;top:0;width:2px;height:40px;background:#C9CDD2}
+.hang::before{left:30%;transform:rotate(18deg);transform-origin:top}
+.hang::after{right:30%;transform:rotate(-18deg);transform-origin:top}
+.sign{margin-top:36px;background:var(--cream);color:var(--ink);border:3px solid #1A110B;border-radius:6px;padding:.45rem .5rem .55rem;text-align:center;box-shadow:3px 4px 0 rgba(0,0,0,.45)}
+.sign b{display:block;font-family:var(--slab);font-weight:400;font-size:1.7rem;line-height:1;letter-spacing:.04em}
+.sign b.open{color:#1D6B3A}.sign b.closed{color:var(--red)}
+.sign small{display:block;font-family:var(--narrow);font-weight:700;font-size:.8rem;line-height:1.2;margin-top:.25rem;color:var(--soft)}
+@keyframes swing{0%{transform:rotate(9deg)}25%{transform:rotate(-6deg)}50%{transform:rotate(3.5deg)}75%{transform:rotate(-1.5deg)}100%{transform:rotate(0)}}
+@media(max-width:44rem){
+  .pane{padding-top:8.6rem}
+  .hang{left:50%;right:auto;margin-left:-4.75rem}
+}
+
+/* Door: hours painted on the glass like a real shop door */
+.door{background:radial-gradient(130% 80% at 50% 0%,var(--glass-2),var(--glass));border:6px solid #9AA0A7;outline:2px solid var(--gold-lo);outline-offset:-12px;color:var(--cream);padding:1.8rem 1.3rem;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative}
+.door h2{font-family:var(--slab);font-weight:400;font-size:1.9rem;letter-spacing:.08em;color:var(--gold);margin:0 0 .7rem;line-height:1}
+.hours{list-style:none;margin:0;padding:0;width:100%;max-width:13rem;font-family:var(--narrow);font-weight:700;letter-spacing:.06em}
+.hours li{display:flex;justify-content:space-between;padding:.3rem 0;border-bottom:1px dotted rgba(212,168,75,.35);color:var(--gold)}
+.hours li.off{color:rgba(241,233,216,.38)}
+.hours li.today{color:var(--cream)}
+.hours li.today span:first-child::before{content:"▸ ";color:#E2564D}
+.late{margin:1rem 0 0;text-align:center;font-family:var(--narrow);font-weight:700;letter-spacing:.06em;font-size:1rem;line-height:1.3;color:var(--cream)}
+.late b{color:#E2564D}
+.knob{position:absolute;left:14px;top:55%;width:12px;height:12px;border-radius:50%;background:var(--gold);box-shadow:inset -2px -2px 0 var(--gold-lo)}
+
+/* Barber pole: the one piece of constant motion, and it's what barbers actually spin */
+.pole-wrap{display:none}
+@media(min-width:56rem){
+  .storefront{padding-right:5.4rem}
+  .awning{margin-right:-5.4rem}
+  .pole-wrap{display:block;position:absolute;right:1.4rem;top:8rem;width:2.6rem}
+  .pole-cap{height:1.1rem;background:linear-gradient(90deg,#6E737A,#F2F4F6 40%,#6E737A);border-radius:1.2rem 1.2rem 3px 3px}
+  .pole-cap.b{border-radius:3px 3px 1.2rem 1.2rem}
+  .pole{height:15rem;margin:0 .25rem;border:2px solid rgba(255,255,255,.4);background:
+     linear-gradient(90deg,rgba(0,0,0,.35),rgba(255,255,255,.35) 35%,rgba(0,0,0,.25) 75%),
+     repeating-linear-gradient(-55deg,var(--red) 0 14px,#fff 14px 24px,var(--blue) 24px 38px,#fff 38px 48px);
+    background-size:100% 100%,100% 96px;animation:spin 2.4s linear infinite}
+}
+@keyframes spin{to{background-position:0 0,0 96px}}
+@media(prefers-reduced-motion:reduce){.pole,.hang,.awning{animation:none}}
+.sill{height:44px;margin:14px -5.4rem 0 -14px;background:repeating-conic-gradient(#111 0 25%,#EDEDEA 0 50%) 0 0/44px 44px;border-top:4px solid #9AA0A7}
+@media(max-width:56rem){.sill{margin-right:-14px}}
+
+/* ---------- INSIDE THE SHOP ---------- */
+.wrap{max-width:62rem;margin:0 auto;padding:0 1.25rem}
+section{padding:3.2rem 0}
+.kicker{font-family:var(--narrow);font-weight:700;letter-spacing:.2em;text-transform:uppercase;font-size:.95rem;color:var(--red);margin:0;line-height:1;padding-left:2.4rem;position:relative}
+.kicker::before{content:"";position:absolute;left:0;top:50%;width:1.9rem;height:8px;margin-top:-4px;background:repeating-linear-gradient(-45deg,var(--red) 0 5px,#fff 5px 8px,var(--blue) 8px 13px,#fff 13px 16px);outline:1px solid #C9CDD2}
+h2.big{font-family:var(--slab);font-weight:400;font-size:clamp(2.1rem,6vw,3.2rem);line-height:1;margin:.2rem 0 1.4rem}
+
+/* Felt letterboard menu */
+.board{background:repeating-linear-gradient(180deg,rgba(255,255,255,.035) 0 2px,transparent 2px 9px),var(--felt);
+  border:12px solid #A9AEB4;outline:2px solid #6E737A;padding:1.6rem 1.3rem;color:#F4F1EA;font-family:var(--narrow);font-weight:700;text-transform:uppercase;letter-spacing:.14em;max-width:40rem}
+.board .t{text-align:center;font-size:1.2rem;margin:0 0 1.2rem;letter-spacing:.3em}
+.line{display:flex;align-items:baseline;gap:.6rem;margin:.75rem 0;font-size:clamp(.95rem,2.8vw,1.2rem)}
+.line .dots{flex:1;border-bottom:2px dotted rgba(244,241,234,.35);transform:translateY(-4px)}
+.line .p{color:#FFDA7A}
+.board .foot{margin:1.3rem 0 0;text-align:center;font-size:.78rem;letter-spacing:.2em;color:#BDB6A8}
+.tilt{display:inline-block;transform:rotate(-5deg) translateY(1px)}
+
+/* Review on an appointment card */
+.cardrow{display:grid;gap:2rem;align-items:center}
+@media(min-width:56rem){.cardrow{grid-template-columns:1.4fr 1fr}}
+.appt{background:#fff;border:1px solid var(--cream-2);padding:1.6rem 1.5rem 1.4rem;transform:rotate(-1.4deg);box-shadow:6px 8px 0 rgba(28,23,18,.08)}
+.appt q{display:block;font-family:var(--slab);font-size:clamp(1.5rem,4vw,2rem);line-height:1.12}
+.appt .who{margin-top:1rem;font-family:var(--narrow);font-weight:700;letter-spacing:.1em;font-size:1.05rem;color:var(--red);line-height:1}
+.appt .src{font-size:.85rem;color:var(--soft);margin-top:.2rem}
+.score{font-family:var(--slab);font-size:5rem;line-height:.9;margin:0}
+.score + p{margin:.4rem 0 0;color:var(--soft);font-weight:600}
+
+/* Find us */
+.find{background:var(--cream-2)}
+.find .addr{font-family:var(--slab);font-size:clamp(2rem,6vw,3rem);line-height:1;margin:0}
+.find p{margin:.4rem 0;color:var(--soft)}
+.find p.addr{color:var(--ink)}
+.btn{display:inline-block;margin-top:1rem;font-family:var(--narrow);font-weight:700;letter-spacing:.06em;font-size:1.05rem;text-decoration:none;padding:.8rem 1.3rem;border:2px solid var(--ink);background:var(--ink);color:var(--cream)}
+.btn:hover{background:var(--red);border-color:var(--red)}
+.btn:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+
+footer{background:var(--frame);color:#9AA0A7;font-size:.85rem;padding:1.4rem 1.25rem;display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem}
+
+.thumb{position:fixed;left:0;right:0;bottom:0;display:flex;gap:.5rem;padding:.6rem .75rem calc(.6rem + env(safe-area-inset-bottom,0px));background:var(--frame);border-top:3px solid #9AA0A7;z-index:9}
+.thumb a{flex:1;text-align:center;padding:.8rem;font-family:var(--narrow);font-weight:700;letter-spacing:.08em;text-decoration:none;border:2px solid var(--gold);color:var(--gold-hi)}
+.thumb a.c{background:var(--gold);color:#1A110B}
+@media(min-width:56rem){.thumb{display:none}}
+</style>
+</head>
+<body>
+
+<div class="concept">Concept demo built for Barber C.A.R.E. by <a href="tel:+18259772662">Mainfront</a>. Prices and photos get swapped for yours.</div>
+
+<header class="storefront">
+  <div class="awning" aria-hidden="true"></div>
+  <div class="window">
+    <div class="pane">
+      <div class="hang" aria-live="polite">
+        <div class="sign"><b id="sign">OPEN</b><small id="signsub">Tue to Fri</small></div>
+      </div>
+      <svg class="arch" viewBox="0 0 640 230" role="img" aria-label="Barber">
+        <defs>
+          <linearGradient id="gilt" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#F6DE97"/><stop offset=".45" stop-color="#D4A84B"/>
+            <stop offset=".55" stop-color="#8A6421"/><stop offset="1" stop-color="#D4A84B"/>
+          </linearGradient>
+          <filter id="shade"><feDropShadow dx="3" dy="3" stdDeviation="0" flood-color="#000" flood-opacity=".45"/></filter>
+          <path id="arc" d="M70,215 A290,290 0 0 1 570,215"/>
+        </defs>
+        <text><textPath href="#arc" startOffset="50%" text-anchor="middle">BARBER</textPath></text>
+      </svg>
+      <h1 class="care">C.A.R.E.</h1>
+      <p class="est">5009 50 STREET · STONY PLAIN</p>
+      <div class="rule" aria-hidden="true"></div>
+      <p class="services-paint">CUTS · BEARDS · FACIALS</p>
+      <div class="paint-btns">
+        <a class="pbtn solid" href="tel:+17809203217">CALL TO BOOK</a>
+        <a class="pbtn" href="https://www.google.com/maps/search/?api=1&query=Barber+C.A.R.E.+5009+50+St+Stony+Plain+AB" target="_blank" rel="noopener">DIRECTIONS</a>
+      </div>
+      <div class="num">780-920-3217</div>
+    </div>
+    <aside class="door" aria-labelledby="hrs">
+            <h2 id="hrs">HOURS</h2>
+      <ul class="hours" id="hours">
+        <li class="off" data-d="1"><span>MON</span><span>CLOSED</span></li>
+        <li data-d="2"><span>TUE</span><span>9 – 4:30</span></li>
+        <li data-d="3"><span>WED</span><span>9 – 5</span></li>
+        <li data-d="4"><span>THU</span><span>12 – 7</span></li>
+        <li data-d="5"><span>FRI</span><span>9 – 4:30</span></li>
+        <li class="off" data-d="6"><span>SAT</span><span>CLOSED</span></li>
+        <li class="off" data-d="0"><span>SUN</span><span>CLOSED</span></li>
+      </ul>
+      <p class="late"><b>LATE THURSDAYS</b><br>for the 9-to-5 crowd</p>
+    </aside>
+  </div>
+  <div class="pole-wrap" aria-hidden="true"><div class="pole-cap"></div><div class="pole"></div><div class="pole-cap b"></div></div>
+  <div class="sill" aria-hidden="true"></div>
+</header>
+
+<section>
+  <div class="wrap">
+    <p class="kicker">What's on the board</p>
+    <h2 class="big">Sit down. Say what you want.</h2>
+    <div class="board">
+      <p class="t">— THE CHAIR —</p>
+      <div class="line"><span>Men's <span class="tilt">h</span>aircut</span><span class="dots"></span><span class="p">$ —</span></div>
+      <div class="line"><span>Beard trim</span><span class="dots"></span><span class="p">$ —</span></div>
+      <div class="line"><span>Cut + beard</span><span class="dots"></span><span class="p">$ —</span></div>
+      <div class="line"><span>Men's facial</span><span class="dots"></span><span class="p">$ —</span></div>
+      <p class="foot">Call to book · 780-920-3217</p>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap cardrow">
+    <div class="appt">
+      <q>Shop is always clean and it's never a long wait.</q>
+      <div class="who">Josh R.</div>
+      <div class="src">a regular, on his cuts from Holly</div>
+    </div>
+    <div>
+      <p class="score">4.9</p>
+      <p>out of 5, from 34 reviews</p>
+    </div>
+  </div>
+</section>
+
+<section class="find">
+  <div class="wrap">
+    <p class="kicker">Come on in</p>
+    <p class="addr">5009 50 Street</p>
+    <p>Stony Plain, AB T7Z 1T3 · 780-920-3217</p>
+    <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Barber+C.A.R.E.+5009+50+St+Stony+Plain+AB" target="_blank" rel="noopener">OPEN IN MAPS</a>
+  </div>
+</section>
+
+<footer>
+  <span>Barber C.A.R.E. · 5009 50 St, Stony Plain</span>
+  <span>Site by Mainfront · (825) 977-2662</span>
+</footer>
+
+<nav class="thumb" aria-label="Quick actions">
+  <a class="c" href="tel:+17809203217">CALL</a>
+  <a href="https://www.google.com/maps/search/?api=1&query=Barber+C.A.R.E.+5009+50+St+Stony+Plain+AB" target="_blank" rel="noopener">DIRECTIONS</a>
+</nav>
+
+<script>
+// The hanging sign flips with the shop's real hours, in Stony Plain time.
+(function(){
+  var H={2:[540,990],3:[540,1020],4:[720,1140],5:[540,990]};
+  var names=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  function fmt(m){var h=Math.floor(m/60),mm=m%60,ap=h>=12?'pm':'am';h=h%12||12;return h+(mm?':'+String(mm).padStart(2,'0'):'')+ap}
+  function now(){
+    try{var o={};new Intl.DateTimeFormat('en-CA',{timeZone:'America/Edmonton',weekday:'short',hour:'numeric',minute:'numeric',hourCycle:'h23'}).formatToParts(new Date()).forEach(function(x){o[x.type]=x.value});
+      return {d:names.indexOf(o.weekday),m:(+o.hour)*60+(+o.minute)}}
+    catch(e){var n=new Date();return {d:n.getDay(),m:n.getHours()*60+n.getMinutes()}}
+  }
+  var n=now(),h=H[n.d],s=document.getElementById('sign'),sub=document.getElementById('signsub');
+  var li=document.querySelector('#hours li[data-d="'+n.d+'"]');if(li)li.classList.add('today');
+  if(h&&n.m>=h[0]&&n.m<h[1]){s.textContent='OPEN';s.className='open';sub.textContent='till '+fmt(h[1])+' today';}
+  else{
+    for(var i=0;i<8;i++){var dd=(n.d+i)%7,x=H[dd];if(x&&(i>0||n.m<x[0]))break}
+    s.textContent='CLOSED';s.className='closed';
+    sub.textContent='back '+(i===0?'today':i===1?'tomorrow':names[dd])+' at '+fmt(H[dd][0]);
+  }
+})();
+</script>
+</body>
+</html>
