@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Swatch Nail Studio (concept demo)</title>
+<meta name="description" content="Concept homepage for a Spruce Grove nail studio, built by Mainfront.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;1,6..96,500&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Concept: the swatch fan every nail tech keeps at the station, and the polish bottle.
+   Tap a nail tip and the bottle, its label and the page accent all take the colour. */
+:root{
+  --porcelain:#F7F1EE; --oxblood:#5B1A22; --ballet:#EDC3BD; --nude:#CFA58A; --chrome:#B9BCC0;
+  --ink:#1F1416; --soft:#6E5A5C; --line:#E4D6D2; --pick:#5B1A22; --pick-ink:#fff;
+  --display:'Bodoni Moda',Didot,'Times New Roman',serif; --body:'Jost',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;font:17px/1.6 var(--body);color:var(--ink);background:var(--porcelain);padding-bottom:4.4rem}
+@media(min-width:60rem){body{padding-bottom:0}}
+a{color:inherit}
+.concept{background:var(--ink);color:#D9CACB;font-size:.8rem;text-align:center;padding:.45rem 1rem}
+.concept a{color:#fff;font-weight:500}
+
+header{max-width:72rem;margin:0 auto;padding:2.4rem 1.25rem 1rem;display:grid;gap:1.5rem;align-items:center}
+@media(min-width:56rem){header{grid-template-columns:1.1fr 1fr;padding-top:3.4rem}}
+.mark{font:italic 500 clamp(3.6rem,13vw,7.6rem)/.85 var(--display);margin:0;letter-spacing:-.02em}
+.mark small{display:block;font:500 .9rem var(--body);letter-spacing:.4em;text-transform:uppercase;margin-top:1.1rem;color:var(--soft)}
+.intro{max-width:30rem;margin:1.4rem 0 1.6rem;font-size:1.08rem}
+.btn{display:inline-block;font:500 .95rem var(--body);letter-spacing:.08em;text-transform:uppercase;text-decoration:none;padding:.85rem 1.3rem;background:var(--pick);color:var(--pick-ink);transition:background .3s}
+.btn.line{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.btn:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.btns{display:flex;flex-wrap:wrap;gap:.7rem}
+
+/* Fan + bottle */
+.station{position:relative;height:25rem;max-width:30rem;width:100%;justify-self:center}
+.fan{position:absolute;left:40%;bottom:2.2rem;width:0;height:0}
+.tip{position:absolute;left:-1.3rem;bottom:0;width:2.6rem;height:15rem;transform-origin:50% 100%;border:0;padding:0;background:none;cursor:pointer}
+.tip::before{content:"";position:absolute;left:50%;bottom:0;width:4px;margin-left:-2px;height:9rem;background:#D8D2CF}
+.tip i{position:absolute;left:0;top:0;width:2.6rem;height:5.4rem;border-radius:1.3rem 1.3rem .5rem .5rem;background:var(--c);box-shadow:inset -5px 0 0 rgba(255,255,255,.22),inset 0 -3px 0 rgba(0,0,0,.08);transition:transform .2s}
+.tip:hover i,.tip[aria-pressed=true] i{transform:translateY(-.7rem)}
+.tip:focus-visible i{outline:2px solid var(--ink);outline-offset:3px}
+.pivot{position:absolute;left:40%;bottom:1.6rem;width:1.4rem;height:1.4rem;margin-left:-.7rem;border-radius:50%;background:#C9C2BE;border:3px solid #9F9692}
+.bottle{position:absolute;right:0;bottom:0;width:7.5rem}
+.bottle svg{width:100%;height:auto;display:block}
+.label{position:absolute;left:0;bottom:-.2rem;font-size:.86rem;line-height:1.3}
+.label b{display:block;font:italic 500 1.5rem/1.1 var(--display)}
+.label span{color:var(--soft)}
+@media(max-width:30rem){.station{height:17.5rem}.tip{height:10.5rem;left:-1.1rem;width:2.2rem}.tip i{width:2.2rem;height:4.4rem}.tip::before{height:6rem}.bottle{width:5rem}.fan,.pivot{left:44%}.mark small{letter-spacing:.22em}}
+
+main{max-width:72rem;margin:0 auto;padding:0 1.25rem}
+section{padding:3.4rem 0 .6rem;border-top:1px solid var(--line);margin-top:2rem}
+h2{font:italic 500 clamp(2.1rem,5vw,3rem)/1 var(--display);margin:0 0 .6rem}
+.lede{color:var(--soft);max-width:34rem;margin:0 0 1.6rem}
+
+/* Price list */
+.menu{display:grid;gap:2.2rem}
+@media(min-width:52rem){.menu{grid-template-columns:1fr 1fr;gap:3.4rem}}
+.menu h3{font:500 .82rem var(--body);letter-spacing:.32em;text-transform:uppercase;margin:0 0 .6rem;color:var(--pick);transition:color .3s}
+.item{display:flex;align-items:baseline;gap:.5rem;padding:.45rem 0}
+.item b{font-weight:500}
+.item .dots{flex:1;border-bottom:1px dotted #B9A6A3;transform:translateY(-.3rem)}
+.item span{font-variant-numeric:tabular-nums}
+.item small{display:block;width:100%;color:var(--soft);font-size:.9rem;margin-top:-.3rem}
+.it{margin-bottom:.4rem}
+
+/* Policies, set like the card taped to the mirror */
+.card{margin-top:1.4rem;background:#fff;border:1px solid var(--line);padding:1.4rem 1.5rem;max-width:36rem;position:relative}
+.card::before{content:"";position:absolute;top:-.7rem;left:1.5rem;width:4.5rem;height:1.4rem;background:rgba(237,195,189,.75);transform:rotate(-4deg)}
+.card p{margin:.4rem 0}
+
+.visit{display:grid;gap:2rem}
+@media(min-width:52rem){.visit{grid-template-columns:1fr 1fr}}
+table{border-collapse:collapse;width:100%}
+td{padding:.5rem 0;border-bottom:1px solid var(--line)}
+td:last-child{text-align:right;font-variant-numeric:tabular-nums}
+tr.today td{font-weight:500;color:var(--pick)}
+.now{font:italic 500 1.6rem var(--display);margin:0 0 .5rem}
+footer{margin-top:3.4rem;border-top:1px solid var(--line);padding:1.4rem 1.25rem;display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem;font-size:.88rem;color:var(--soft)}
+.bar{position:fixed;left:0;right:0;bottom:0;display:grid;grid-template-columns:1fr 1fr;z-index:9}
+.bar a{text-align:center;padding:1rem .4rem;text-decoration:none;font-weight:500;letter-spacing:.06em;text-transform:uppercase;font-size:.9rem;background:var(--ink);color:#fff}
+.bar a:first-child{background:var(--pick);color:var(--pick-ink);transition:background .3s}
+.bar a:focus-visible{outline:2px solid #fff;outline-offset:-4px}
+@media(min-width:60rem){.bar{display:none}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="concept">Concept demo by <a href="../mainfront/">Mainfront</a>. Swatch is a made-up studio and the prices are samples; yours go here.</div>
+
+<header>
+  <div>
+    <h1 class="mark">Swatch<small>Nail studio · Spruce Grove</small></h1>
+    <p class="intro">Gel, acrylic and pedicures done slowly and properly, at a two-chair studio where you'll always see the same tech.</p>
+    <div class="btns">
+      <a class="btn" href="tel:+17805550129">Call to book</a>
+      <a class="btn line" href="#menu">See the menu</a>
+    </div>
+  </div>
+  <div class="station" aria-label="Swatch fan. Tap a colour.">
+    <div class="fan" id="fan"></div>
+    <div class="pivot" aria-hidden="true"></div>
+    <div class="bottle" aria-hidden="true">
+      <svg viewBox="0 0 120 200"><rect x="38" y="0" width="44" height="78" rx="6" fill="#1F1416"/><rect x="34" y="72" width="52" height="12" fill="#3A2A2C"/>
+        <path d="M18 92 Q18 84 30 84 H90 Q102 84 102 92 V182 Q102 196 88 196 H32 Q18 196 18 182 Z" id="glass" fill="#5B1A22"/>
+        <path d="M26 96 V176" stroke="rgba(255,255,255,.35)" stroke-width="6" stroke-linecap="round"/>
+        <rect x="28" y="128" width="64" height="34" fill="#F7F1EE"/><text x="60" y="150" text-anchor="middle" font-family="Bodoni Moda,serif" font-style="italic" font-size="15" fill="#1F1416">Swatch</text></svg>
+    </div>
+    <div class="label" aria-live="polite"><b id="cname">Oxblood</b><span id="cnote">Tap a tip to pick a colour</span></div>
+  </div>
+</header>
+
+<main>
+  <section id="menu">
+    <h2>The menu</h2>
+    <p class="lede">Prices include shaping, cuticle work and your colour. Nail art is quoted when you sit down, after you show us the photo.</p>
+    <div class="menu">
+      <div>
+        <h3>Hands</h3>
+        <div class="it"><div class="item"><b>Gel polish</b><i class="dots"></i><span>$45</span></div><small>Lasts two to three weeks</small></div>
+        <div class="it"><div class="item"><b>Gel removal and redo</b><i class="dots"></i><span>$55</span></div></div>
+        <div class="it"><div class="item"><b>Acrylic full set</b><i class="dots"></i><span>from $70</span></div><small>Any length, any shape</small></div>
+        <div class="it"><div class="item"><b>Acrylic fill</b><i class="dots"></i><span>$58</span></div><small>Within three weeks</small></div>
+        <div class="it"><div class="item"><b>Classic manicure</b><i class="dots"></i><span>$35</span></div></div>
+      </div>
+      <div>
+        <h3>Feet &amp; extras</h3>
+        <div class="it"><div class="item"><b>Spa pedicure</b><i class="dots"></i><span>$60</span></div><small>Soak, scrub, massage, regular polish</small></div>
+        <div class="it"><div class="item"><b>Gel pedicure</b><i class="dots"></i><span>$70</span></div></div>
+        <div class="it"><div class="item"><b>French or ombr&eacute;</b><i class="dots"></i><span>+$10</span></div></div>
+        <div class="it"><div class="item"><b>Nail art</b><i class="dots"></i><span>from $5</span></div><small>Per nail or per set, depending on detail</small></div>
+        <div class="it"><div class="item"><b>Single nail repair</b><i class="dots"></i><span>$5</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Before you come in</h2>
+    <div class="card">
+      <p><b>Booking:</b> call or text. Walk-ins only if the chair is free.</p>
+      <p><b>Running late?</b> Text us. More than 15 minutes and we may need to move you.</p>
+      <p><b>Cancelling:</b> 24 hours' notice so someone else can have the spot.</p>
+      <p><b>Inspiration photos:</b> bring them. Screenshots are the fastest way to get it right.</p>
+    </div>
+  </section>
+
+  <section class="visit">
+    <div>
+      <h2>Find us</h2>
+      <p class="now" id="now">&nbsp;</p>
+      <p>Spruce Grove, Alberta. Free parking at the door.</p>
+      <p><a class="btn line" href="https://www.google.com/maps/search/?api=1&amp;query=Spruce+Grove+AB" target="_blank" rel="noopener">Directions</a></p>
+    </div>
+    <div>
+      <h2>Hours</h2>
+      <table id="hrs"></table>
+    </div>
+  </section>
+</main>
+
+<footer><span>Swatch Nail Studio · Spruce Grove, AB · 780-555-0129</span><span>Website by <a href="../mainfront/">Mainfront</a></span></footer>
+<nav class="bar" aria-label="Quick contact"><a href="tel:+17805550129">Call to book</a><a href="sms:+17805550129">Text us</a></nav>
+
+<script>
+(function(){
+  var C=[['Ballet slipper','#EDC3BD','#1F1416','Sheer pink, the one that goes with everything'],['Bare nude','#CFA58A','#1F1416','Your nails, but better'],['Milk bath','#F3ECE6','#1F1416','Soft white, very clean'],['Cherry cola','#8E1F2B','#fff','Deep red for December'],['Oxblood','#5B1A22','#fff','Dark, glossy, a bit dramatic'],['Espresso','#3B2520','#fff','Near black with warmth'],['Chrome','#B9BCC0','#1F1416','Mirror powder over gel'],['Spruce','#24453A','#fff','Dark green, very Alberta'],['Marigold','#E2A23B','#1F1416','A warm one for summer']];
+  var fan=document.getElementById('fan'),glass=document.getElementById('glass'),nm=document.getElementById('cname'),nt=document.getElementById('cnote'),root=document.documentElement;
+  var spread=window.innerWidth<480?92:104,start=-spread/2,step=spread/(C.length-1);
+  C.forEach(function(c,i){
+    var b=document.createElement('button');b.className='tip';b.type='button';b.style.setProperty('--c',c[1]);
+    b.style.transform='rotate('+(start+i*step)+'deg)';b.setAttribute('aria-label',c[0]);b.setAttribute('aria-pressed',i===4?'true':'false');
+    b.innerHTML='<i></i>';b.addEventListener('click',function(){pick(i)});fan.appendChild(b);
+  });
+  function pick(i){
+    var c=C[i];glass.setAttribute('fill',c[1]);nm.textContent=c[0];nt.textContent=c[3];
+    root.style.setProperty('--pick',c[1]==='#F3ECE6'?'#1F1416':c[1]);root.style.setProperty('--pick-ink',c[1]==='#F3ECE6'?'#fff':c[2]);
+    [].forEach.call(fan.children,function(b,j){b.setAttribute('aria-pressed',j===i?'true':'false')});
+  }
+  // Hours
+  var HOURS=[null,null,[600,1080],[600,1200],[600,1200],[600,1080],[540,960]];
+  var DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  function edm(){var p={};new Intl.DateTimeFormat('en-US',{timeZone:'America/Edmonton',weekday:'short',hour:'numeric',minute:'numeric',hourCycle:'h23'}).formatToParts(new Date()).forEach(function(x){p[x.type]=x.value});return{d:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(p.weekday),m:(+p.hour%24)*60+(+p.minute)}}
+  function t(m){var h=Math.floor(m/60),mm=m%60,ap=h>=12?'pm':'am';h=h%12||12;return h+(mm?':'+(mm<10?'0':'')+mm:'')+ap}
+  var n=edm(),h=HOURS[n.d],open=h&&n.m>=h[0]&&n.m<h[1],tb=document.getElementById('hrs');
+  for(var i=1;i<=7;i++){var d=i%7,r=tb.insertRow();if(d===n.d)r.className='today';r.insertCell().textContent=DAYS[d];r.insertCell().textContent=HOURS[d]?t(HOURS[d][0])+' to '+t(HOURS[d][1]):'Closed';}
+  var nw=document.getElementById('now');
+  if(open)nw.textContent='Open now until '+t(h[1]);
+  else{var nx;if(h&&n.m<h[0])nx='today at '+t(h[0]);else for(var k=1;k<=7;k++){var dd=(n.d+k)%7;if(HOURS[dd]){nx=(k===1?'tomorrow':DAYS[dd])+' at '+t(HOURS[dd][0]);break}}nw.textContent='Closed, back '+nx;}
+})();
+</script>
+</body>
+</html>

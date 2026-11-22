@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Copper &amp; Flux Plumbing &amp; Heating (concept demo)</title>
+<meta name="description" content="Concept homepage for a Spruce Grove plumbing and heating company, built by Mainfront.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;700&family=Courier+Prime:wght@400;700&family=Public+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* Concept: the service van door, the brass pressure gauge and the carbon-copy work order. */
+:root{
+  --van:#F3F1EC; --navy:#14233A; --navy-2:#20334F; --copper:#B5652B; --brass:#C69A3F;
+  --carbon:#FBF1C4; --carbon-line:#E2D39A; --galv:#8C939A; --ink:#15181C; --soft:#5A6068;
+  --slab:'Zilla Slab',Rockwell,Georgia,serif; --type:'Courier Prime','Courier New',monospace;
+  --body:'Public Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.55 var(--body);color:var(--ink);background:var(--van);padding-bottom:4.4rem}
+@media(min-width:60rem){body{padding-bottom:0}}
+a{color:inherit}
+.concept{background:var(--ink);color:#C9CDD2;font-size:.8rem;text-align:center;padding:.45rem 1rem}
+.concept a{color:#fff;font-weight:600}
+
+/* Van door */
+.van{position:relative;border-bottom:10px solid var(--navy);overflow:hidden}
+.van::before{content:"";position:absolute;left:0;right:0;top:62%;height:14px;background:var(--copper);box-shadow:0 22px 0 -8px var(--navy)}
+.door{position:relative;max-width:72rem;margin:0 auto;padding:2.2rem 1.25rem 3.2rem;display:grid;gap:2rem;align-items:center}
+@media(min-width:60rem){.door{grid-template-columns:1.35fr 1fr;padding-top:3.2rem}}
+.door .seam{position:absolute;top:0;bottom:0;left:62%;width:3px;background:#D9D6CE;display:none}
+@media(min-width:60rem){.door .seam{display:block}}
+.handle{position:absolute;left:calc(62% + 14px);top:46%;width:4.5rem;height:1.1rem;border-radius:.6rem;background:#2A2F36;display:none}
+@media(min-width:60rem){.handle{display:block}}
+.letter{position:relative;z-index:1}
+.letter h1{font-family:var(--slab);font-weight:700;font-size:clamp(2.8rem,9vw,5.6rem);line-height:.88;margin:0;color:var(--navy);letter-spacing:-.01em}
+.letter h1 span{color:var(--copper)}
+.trades{font-family:var(--slab);font-weight:500;font-size:clamp(1rem,2.8vw,1.35rem);letter-spacing:.14em;margin:.9rem 0 1.4rem;color:var(--navy)}
+.bignum{display:inline-block;font-family:var(--slab);font-weight:700;font-size:clamp(2rem,6.5vw,3.4rem);line-height:1;color:var(--van);background:var(--navy);padding:.4rem .7rem .5rem;text-decoration:none;border-bottom:5px solid var(--copper)}
+.bignum:focus-visible{outline:3px solid var(--copper);outline-offset:3px}
+.small{font-size:.92rem;color:var(--soft);margin:.8rem 0 0;max-width:34rem}
+
+/* Gauge */
+.gauge{position:relative;z-index:1;justify-self:center;width:min(19rem,82vw);text-align:center}
+.gauge svg{width:100%;height:auto;display:block}
+#needle{transition:transform 1.4s cubic-bezier(.3,1.6,.5,1);transform-origin:150px 150px}
+.gauge p{margin:.5rem 0 0;font-weight:700;font-size:1.05rem}
+.gauge small{display:block;color:var(--soft);font-size:.86rem;font-weight:400}
+
+main{max-width:72rem;margin:0 auto;padding:0 1.25rem}
+h2{font-family:var(--slab);font-weight:700;font-size:clamp(1.7rem,4.4vw,2.4rem);line-height:1.05;margin:0 0 .4rem;color:var(--navy)}
+.lede{color:var(--soft);margin:0 0 1.4rem;max-width:38rem}
+section{padding:3.4rem 0 1rem}
+
+/* Work order */
+.order{background:var(--carbon);border:1px solid var(--carbon-line);box-shadow:6px 6px 0 #E8E1C9;font-family:var(--type);max-width:46rem;position:relative}
+.order header{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;border-bottom:2px solid var(--ink);padding:.9rem 1.1rem .7rem}
+.order header b{font-size:1.15rem;letter-spacing:.06em}
+.order header span{color:#7B2F12;font-weight:700}
+.order ul{list-style:none;margin:0;padding:0}
+.order li{border-bottom:1px solid var(--carbon-line)}
+.order label{display:grid;grid-template-columns:1.6rem 1fr;gap:.6rem;padding:.75rem 1.1rem;cursor:pointer}
+.order input{appearance:none;width:1.25rem;height:1.25rem;border:2px solid var(--ink);margin:.15rem 0 0;background:#fff;display:grid;place-items:center;cursor:pointer}
+.order input:checked::after{content:"X";font:700 1rem/1 var(--type);color:#7B2F12}
+.order input:focus-visible{outline:3px solid var(--copper);outline-offset:2px}
+.order label b{display:block;font-size:1.02rem}
+.order label span{display:block;font-size:.9rem;color:#4A4A3E}
+.order footer{padding:1rem 1.1rem 1.2rem;display:flex;flex-wrap:wrap;gap:.8rem;align-items:center}
+.order textarea{width:100%;font:inherit;font-size:.95rem;background:transparent;border:0;border-bottom:1px solid var(--ink);resize:vertical;min-height:2.6rem;padding:.3rem 0}
+.order textarea:focus-visible{outline:2px solid var(--copper)}
+.btn{font:700 1rem var(--body);text-decoration:none;background:var(--navy);color:#fff;padding:.8rem 1.2rem;border:0;cursor:pointer;display:inline-block}
+.btn.alt{background:transparent;color:var(--navy);box-shadow:inset 0 0 0 2px var(--navy)}
+.btn:focus-visible{outline:3px solid var(--copper);outline-offset:3px}
+.stamp{position:absolute;right:1.2rem;top:3.6rem;transform:rotate(-8deg);border:3px solid #7B2F12;color:#7B2F12;font:700 .85rem/1.1 var(--type);padding:.3rem .5rem;text-align:center;opacity:.8}
+@media(max-width:40rem){.stamp{display:none}}
+
+/* Season note */
+.season{display:grid;gap:1.4rem;background:var(--navy);color:#E9ECF0;padding:1.8rem 1.4rem;margin-top:1rem}
+@media(min-width:52rem){.season{grid-template-columns:16rem 1fr;padding:2.2rem}}
+.season h3{font-family:var(--slab);font-size:1.7rem;line-height:1.05;margin:0;color:#fff}
+.season h3 em{font-style:normal;color:var(--brass)}
+.season ol{margin:0;padding-left:1.2rem}
+.season li{margin:.35rem 0}
+
+/* Pipe run of towns */
+.pipe{position:relative;display:flex;flex-wrap:wrap;gap:1.4rem 0;padding:1.6rem 0 .6rem}
+.pipe::before{content:"";position:absolute;left:0;right:0;top:2.3rem;height:12px;background:var(--copper);border-block:2px solid #8A4A1C}
+.stop{position:relative;flex:1 1 9rem;padding-top:2.4rem;text-align:center;font-weight:700}
+.stop::before{content:"";position:absolute;left:50%;top:-.2rem;width:28px;height:28px;margin-left:-14px;background:var(--brass);border:3px solid #8C6A22;border-radius:4px}
+.stop small{display:block;font-weight:400;color:var(--soft);font-size:.85rem}
+
+@media(max-width:40rem){.pipe{flex-direction:column;gap:1.3rem;padding:.6rem 0 .6rem 2.6rem}.pipe::before{left:.7rem;right:auto;top:0;bottom:0;width:12px;height:auto;border-block:0;border-inline:2px solid #8A4A1C}.stop{flex:none;text-align:left;padding-top:0}.stop::before{left:-2.4rem;top:0;margin-left:0}}
+/* Hours */
+.hours{display:grid;gap:2rem}
+@media(min-width:52rem){.hours{grid-template-columns:1fr 1fr}}
+table{border-collapse:collapse;width:100%;font-size:.98rem}
+td{padding:.55rem 0;border-bottom:1px solid #D7D3C9}
+td:last-child{text-align:right;font-variant-numeric:tabular-nums}
+tr.today td{font-weight:700;color:var(--navy)}
+.after{border-left:6px solid var(--copper);padding:.4rem 0 .4rem 1rem}
+.after p{margin:.2rem 0}
+footer.site{margin-top:3.4rem;border-top:10px solid var(--navy);padding:1.4rem 1.25rem;display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem;font-size:.88rem;color:var(--soft)}
+
+/* Call bar */
+.bar{position:fixed;left:0;right:0;bottom:0;display:grid;grid-template-columns:1.2fr 1fr 1fr;background:var(--navy);z-index:9}
+.bar a{color:#fff;text-decoration:none;font-weight:700;text-align:center;padding:1rem .4rem;font-size:.95rem}
+.bar a:first-child{background:var(--copper)}
+.bar a:focus-visible{outline:3px solid var(--brass);outline-offset:-3px}
+@media(min-width:60rem){.bar{display:none}}
+@media(prefers-reduced-motion:reduce){#needle{transition:none}}
+</style>
+</head>
+<body>
+<div class="concept">Concept demo by <a href="../mainfront/">Mainfront</a>. Copper &amp; Flux is a made-up business; your name, number and photos go here.</div>
+
+<header class="van">
+  <div class="door">
+    <div class="seam" aria-hidden="true"></div>
+    <div class="letter">
+      <h1>Copper <span>&amp;</span><br>Flux</h1>
+      <p class="trades">PLUMBING · HEATING · GAS FITTING</p>
+      <a class="bignum" href="tel:+17805550142">780-555-0142</a>
+      <p class="small">Spruce Grove, Stony Plain and Parkland County. Water heaters, furnaces, frozen lines and everything between the meter and the tap.</p>
+    </div>
+    <div class="gauge" aria-live="polite">
+      <svg viewBox="0 0 300 300" role="img" aria-labelledby="gt">
+        <title id="gt">Pressure gauge showing whether the office is open</title>
+        <circle cx="150" cy="150" r="142" fill="#C69A3F"/>
+        <circle cx="150" cy="150" r="128" fill="#8C6A22"/>
+        <circle cx="150" cy="150" r="122" fill="#FBF8EF"/>
+        <path d="M60 205 A105 105 0 0 1 150 45" fill="none" stroke="#2E7D46" stroke-width="16"/>
+        <path d="M150 45 A105 105 0 0 1 240 205" fill="none" stroke="#B5652B" stroke-width="16"/>
+        <g stroke="#15181C" stroke-width="3">
+          <line x1="68" y1="200" x2="80" y2="193"/><line x1="56" y1="150" x2="70" y2="150"/><line x1="68" y1="100" x2="80" y2="107"/>
+          <line x1="103" y1="68" x2="110" y2="80"/><line x1="150" y1="56" x2="150" y2="70"/><line x1="197" y1="68" x2="190" y2="80"/>
+          <line x1="232" y1="100" x2="220" y2="107"/><line x1="244" y1="150" x2="230" y2="150"/><line x1="232" y1="200" x2="220" y2="193"/>
+        </g>
+        <text x="100" y="186" font-family="Zilla Slab,serif" font-weight="700" font-size="15" fill="#2E7D46" text-anchor="middle">OFFICE</text>
+        <text x="100" y="202" font-family="Zilla Slab,serif" font-weight="700" font-size="15" fill="#2E7D46" text-anchor="middle">OPEN</text>
+        <text x="200" y="186" font-family="Zilla Slab,serif" font-weight="700" font-size="15" fill="#B5652B" text-anchor="middle">AFTER</text>
+        <text x="200" y="202" font-family="Zilla Slab,serif" font-weight="700" font-size="15" fill="#B5652B" text-anchor="middle">HOURS</text>
+        <text x="150" y="248" font-family="Courier Prime,monospace" font-size="13" fill="#5A6068" text-anchor="middle">C&amp;F · PSI</text>
+        <g id="needle" style="transform:rotate(-90deg)"><path d="M147 150 L150 62 L153 150 Z" fill="#15181C"/></g>
+        <circle cx="150" cy="150" r="13" fill="#15181C"/><circle cx="150" cy="150" r="5" fill="#C69A3F"/>
+      </svg>
+      <p id="gstate">Checking the office&hellip;</p>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="work">
+    <h2>Fill out the work order</h2>
+    <p class="lede">Tick what's going on and send it as a text. We read it before we call you back, so you only explain it once.</p>
+    <form class="order" id="order" onsubmit="return false">
+      <header><b>WORK ORDER</b><span>No. <span id="wo">0000</span></span></header>
+      <ul>
+        <li><label><input type="checkbox" value="Water heater (no hot water / leaking)"><div><b>Water heater</b><span>No hot water, leaking tank, tankless installs and flushes.</span></div></label></li>
+        <li><label><input type="checkbox" value="Furnace or boiler service"><div><b>Furnace &amp; boiler</b><span>Fall tune-ups, no-heat calls, in-floor heat and boilers.</span></div></label></li>
+        <li><label><input type="checkbox" value="Frozen or burst pipe"><div><b>Frozen or burst line</b><span>Thawing, repairs and heat trace on lines that keep freezing.</span></div></label></li>
+        <li><label><input type="checkbox" value="Slow or plugged drain"><div><b>Drains</b><span>Kitchen, floor drains and main line clearing.</span></div></label></li>
+        <li><label><input type="checkbox" value="Gas line (BBQ, range, heater)"><div><b>Gas lines</b><span>BBQ and range hookups, garage heaters, permits pulled.</span></div></label></li>
+        <li><label><input type="checkbox" value="Sump pump"><div><b>Sump pumps</b><span>Replacements and backups before spring melt.</span></div></label></li>
+        <li><label><input type="checkbox" value="Renovation rough-in"><div><b>Reno rough-ins</b><span>Basement bathrooms, laundry moves, fixture swaps.</span></div></label></li>
+      </ul>
+      <footer>
+        <textarea id="notes" rows="2" placeholder="Anything else? (Where, how long, any water on the floor)" aria-label="Notes for the plumber"></textarea>
+        <a class="btn" id="send" href="sms:+17805550142">Text this work order</a>
+        <a class="btn alt" href="tel:+17805550142">Or just call</a>
+      </footer>
+      <div class="stamp" aria-hidden="true">LICENSED<br>&amp; INSURED</div>
+    </form>
+  </section>
+
+  <section>
+    <div class="season" id="season">
+      <h3 id="sh">Pipe froze? <em>Do this first.</em></h3>
+      <ol id="sl">
+        <li>Shut the water off at the main. It's usually near the meter in the basement.</li>
+        <li>Open the tap the line feeds so melting ice has somewhere to go.</li>
+        <li>Warm the line with a hair dryer. Never use a torch or open flame.</li>
+        <li>If it split or you can't find it, call us. We'll walk you through it on the phone.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section>
+    <h2>Where the van goes</h2>
+    <p class="lede">No travel charge anywhere on this line.</p>
+    <div class="pipe">
+      <div class="stop">Spruce Grove<small>home shop</small></div>
+      <div class="stop">Stony Plain<small>10 min</small></div>
+      <div class="stop">Acheson<small>15 min</small></div>
+      <div class="stop">Parkland County<small>acreages too</small></div>
+      <div class="stop">West Edmonton<small>20 min</small></div>
+    </div>
+  </section>
+
+  <section class="hours">
+    <div>
+      <h2>Office hours</h2>
+      <table id="htable"></table>
+    </div>
+    <div class="after">
+      <h2>After hours</h2>
+      <p>Same number. When the office is closed it rings the plumber on call.</p>
+      <p><a class="btn" href="tel:+17805550142" style="margin-top:.8rem">780-555-0142</a></p>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <span>Copper &amp; Flux Plumbing &amp; Heating · Spruce Grove, AB</span>
+  <span>Website by <a href="../mainfront/">Mainfront</a></span>
+</footer>
+
+<nav class="bar" aria-label="Quick contact">
+  <a href="tel:+17805550142">Call</a>
+  <a href="#work">Work order</a>
+  <a href="https://www.google.com/maps/search/?api=1&amp;query=Spruce+Grove+AB" target="_blank" rel="noopener">Map</a>
+</nav>
+
+<script>
+(function(){
+  var HOURS=[null,[450,1050],[450,1050],[450,1050],[450,1050],[450,1020],[540,840]]; // Sun..Sat, minutes
+  var DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  function edm(){
+    var p={};new Intl.DateTimeFormat('en-US',{timeZone:'America/Edmonton',weekday:'short',hour:'numeric',minute:'numeric',month:'numeric',hourCycle:'h23'}).formatToParts(new Date()).forEach(function(x){p[x.type]=x.value});
+    return{d:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(p.weekday),m:(+p.hour%24)*60+(+p.minute),mo:+p.month};
+  }
+  function t(m){var h=Math.floor(m/60),mm=m%60,ap=h>=12?'PM':'AM';h=h%12||12;return h+(mm?':'+(mm<10?'0':'')+mm:'')+' '+ap}
+  var n=edm(),h=HOURS[n.d],open=h&&n.m>=h[0]&&n.m<h[1];
+  var tb=document.getElementById('htable');
+  for(var i=1;i<=7;i++){var d=i%7,r=tb.insertRow();if(d===n.d)r.className='today';r.insertCell().textContent=DAYS[d];r.insertCell().textContent=HOURS[d]?t(HOURS[d][0])+' to '+t(HOURS[d][1]):'On call only';}
+  var g=document.getElementById('gstate');
+  if(open){g.innerHTML='The office is open<small>Closes at '+t(h[1])+' today</small>';}
+  else{g.innerHTML='After-hours line is on<small>Same number rings the plumber on call</small>';}
+  requestAnimationFrame(function(){setTimeout(function(){document.getElementById('needle').style.transform='rotate('+(open?-38:42)+'deg)'},150)});
+  // Season: frozen lines Nov to Mar, otherwise sump pumps
+  if(!(n.mo>=11||n.mo<=3)){
+    document.getElementById('sh').innerHTML='Water in the basement? <em>Do this first.</em>';
+    document.getElementById('sl').innerHTML='<li>Check the sump pit. If the water is near the top and the pump is quiet, it has failed.</li><li>Keep power cords off the wet floor and stay out of standing water near outlets.</li><li>Move what you can off the floor and take photos for insurance.</li><li>Call us. Backup pumps go in the same day when we have them on the van.</li>';
+  }
+  // Work order number + sms body
+  document.getElementById('wo').textContent=String(1000+Math.floor(Math.random()*8999));
+  var form=document.getElementById('order'),send=document.getElementById('send');
+  function build(){
+    var items=[].slice.call(form.querySelectorAll('input:checked')).map(function(x){return '- '+x.value});
+    var note=document.getElementById('notes').value.trim();
+    var body='Work order for Copper & Flux:\n'+(items.length?items.join('\n'):'- (not sure yet)')+(note?'\nNotes: '+note:'');
+    send.href='sms:+17805550142?&body='+encodeURIComponent(body);
+  }
+  form.addEventListener('input',build);build();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quiet Room Massage Therapy (concept demo)</title>
+<meta name="description" content="Concept homepage for a Stony Plain registered massage therapy clinic, built by Mainfront.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* Concept: the appointment reminder card you're handed at the front desk, the amber oil bottle,
+   and the folded towel stack. Dark forest and amber glass instead of the usual beige-and-sage spa. */
+:root{
+  --forest:#1F3329; --forest-2:#2A4437; --amber:#8C4A16; --amber-hi:#C27A33; --linen:#F2EDE3; --card:#FBF8F1;
+  --clay:#B76E4E; --ink:#24221F; --soft:#68625A; --line:#DDD4C4;
+  --display:'Gilda Display',Didot,Georgia,serif; --body:'Karla',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;font:17px/1.65 var(--body);color:var(--ink);background:var(--linen);padding-bottom:4.4rem}
+@media(min-width:60rem){body{padding-bottom:0}}
+a{color:inherit}
+.concept{background:#111C16;color:#BFC9C2;font-size:.8rem;text-align:center;padding:.45rem 1rem}
+.concept a{color:#fff;font-weight:700}
+
+.hero{background:var(--forest);color:#EDE8DC;padding:3rem 1.25rem 0}
+.hero-in{max-width:70rem;margin:0 auto;display:grid;gap:2.4rem;align-items:end}
+@media(min-width:56rem){.hero-in{grid-template-columns:1fr 24rem;padding-top:1rem}}
+.hero h1{font:400 clamp(2.5rem,7vw,4.4rem)/1.02 var(--display);margin:0;color:#fff}
+.hero p{max-width:31rem;margin:1.1rem 0 1.6rem;color:#CBD4CD}
+.btn{display:inline-block;font:700 .95rem var(--body);text-decoration:none;padding:.85rem 1.25rem;background:var(--amber-hi);color:#1A120B;border-radius:999px}
+.btn.line{background:transparent;color:inherit;box-shadow:inset 0 0 0 1.5px currentColor}
+.btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.btns{display:flex;flex-wrap:wrap;gap:.7rem;padding-bottom:3rem}
+
+/* Appointment card */
+.appt{background:var(--card);color:var(--ink);padding:1.4rem 1.5rem 1.3rem;transform:rotate(2deg);margin-bottom:-4.5rem;position:relative;z-index:2;box-shadow:0 18px 0 -10px rgba(0,0,0,.18)}
+.appt::before{content:"";position:absolute;inset:8px;border:1px solid var(--line);pointer-events:none}
+.appt p{margin:0}
+@media(max-width:56rem){.appt{margin:0 auto -1.6rem;max-width:22rem;width:92%}}.appt .brand{font:400 1.45rem var(--display);text-align:center;margin:0;color:var(--ink)}
+.appt .rmt{text-align:center;font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--soft);margin:0 0 1rem}
+.appt .ln{display:flex;gap:.6rem;align-items:baseline;font-size:.9rem;margin:.55rem 0}
+.appt .ln span{color:var(--soft);min-width:4.2rem}
+.appt .ln b{flex:1;border-bottom:1px solid var(--ink);font:400 1.15rem var(--display);padding-bottom:.1rem;min-height:1.7rem}
+.appt .foot{font-size:.76rem;color:var(--soft);text-align:center;margin:1rem 0 0}
+.appt .rmt{color:var(--soft)}
+
+main{max-width:70rem;margin:0 auto;padding:0 1.25rem}
+section{padding:4.2rem 0 .6rem}
+h2{font:400 clamp(2rem,4.6vw,2.8rem)/1.05 var(--display);margin:0 0 .6rem}
+.lede{color:var(--soft);max-width:35rem;margin:0 0 1.6rem}
+
+/* Picker */
+.pick{display:grid;gap:2rem}
+@media(min-width:56rem){.pick{grid-template-columns:1fr 20rem}}
+fieldset{border:0;margin:0 0 1.2rem;padding:0}
+legend{font-weight:700;margin-bottom:.6rem}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem}
+.chip{font:500 .95rem var(--body);padding:.55rem .95rem;border-radius:999px;border:1.5px solid var(--line);background:var(--card);cursor:pointer;color:var(--ink)}
+.chip[aria-pressed=true]{background:var(--forest);border-color:var(--forest);color:#fff}
+.chip:focus-visible{outline:3px solid var(--amber-hi);outline-offset:2px}
+.bottle{background:var(--forest);color:#EDE8DC;padding:1.6rem 1.4rem;position:relative;align-self:start}
+.bottle small{font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:#9FB0A5}
+.bottle b{display:block;font:400 3.4rem/1 var(--display);color:#fff;margin:.3rem 0}
+.bottle p{margin:.4rem 0 0;color:#CBD4CD;font-size:.95rem}
+.bottle .price{font:400 1.3rem var(--display);color:var(--amber-hi);margin-top:.8rem}
+
+/* Rates, set like the price sheet in the treatment room */
+.rates{border-top:2px solid var(--ink);max-width:40rem}
+.rate{display:grid;grid-template-columns:1fr auto;gap:.3rem 1rem;padding:.9rem 0;border-bottom:1px solid var(--line)}
+.rate b{font:400 1.35rem var(--display)}
+.rate span{font:400 1.35rem var(--display)}
+.rate small{grid-column:1/-1;color:var(--soft)}
+
+.insure{display:grid;gap:1.4rem;background:var(--card);border:1px solid var(--line);padding:1.6rem 1.5rem}
+@media(min-width:52rem){.insure{grid-template-columns:auto 1fr;align-items:center}}
+.receipt{width:7.5rem;background:#fff;border:1px solid var(--line);padding:.6rem .7rem 1.4rem;font-size:.62rem;line-height:1.5;color:var(--soft);transform:rotate(-3deg);clip-path:polygon(0 0,100% 0,100% 94%,90% 100%,80% 94%,70% 100%,60% 94%,50% 100%,40% 94%,30% 100%,20% 94%,10% 100%,0 94%)}
+.receipt b{color:var(--ink);display:block;font-size:.7rem}
+
+.visit{display:grid;gap:2rem}
+@media(min-width:52rem){.visit{grid-template-columns:1fr 1fr}}
+table{border-collapse:collapse;width:100%}
+td{padding:.5rem 0;border-bottom:1px solid var(--line)}
+td:last-child{text-align:right;font-variant-numeric:tabular-nums}
+tr.today td{font-weight:700;color:var(--forest)}
+.now{font:400 1.5rem var(--display);margin:0 0 .4rem;color:var(--amber)}
+footer{margin-top:3.6rem;background:var(--forest);color:#B4C1B8;padding:1.4rem 1.25rem;display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem;font-size:.88rem}
+footer a{color:#fff}
+.bar{position:fixed;left:0;right:0;bottom:0;display:grid;grid-template-columns:1fr 1fr;z-index:9}
+.bar a{text-align:center;padding:1rem .4rem;text-decoration:none;font-weight:700;background:var(--forest);color:#fff}
+.bar a:first-child{background:var(--amber-hi);color:#1A120B}
+.bar a:focus-visible{outline:3px solid #fff;outline-offset:-4px}
+@media(min-width:60rem){.bar{display:none}}
+</style>
+</head>
+<body>
+<div class="concept">Concept demo by <a href="../mainfront/">Mainfront</a>. Quiet Room is a made-up clinic and the rates are samples; yours go here.</div>
+
+<header class="hero">
+  <div class="hero-in">
+    <div>
+      <h1>Registered massage therapy in Stony Plain.</h1>
+      <p>For the back that's been bugging you since the move, the shoulders from the desk, and the legs after a season of hockey. Insurance receipts every visit.</p>
+      <div class="btns"><a class="btn" href="tel:+17805550151">Call to book</a><a class="btn line" href="#length">Which length do I need?</a></div>
+    </div>
+    <div class="appt" aria-live="polite">
+      <p class="brand">Quiet Room</p>
+      <p class="rmt">Massage therapy · RMT</p>
+      <div class="ln"><span>Name</span><b>&nbsp;</b></div>
+      <div class="ln"><span>Day</span><b id="aday"></b></div>
+      <div class="ln"><span>Time</span><b id="atime"></b></div>
+      <p class="foot">24 hours' notice to change or cancel, please.</p>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="length">
+    <h2>Which length do I need?</h2>
+    <p class="lede">Tap what's sore and what you're after. It's the same thing we'd ask on the phone.</p>
+    <div class="pick">
+      <div>
+        <fieldset><legend>Where does it hurt?</legend><div class="chips" data-g="area">
+          <button type="button" class="chip" data-v="1">Neck and shoulders</button>
+          <button type="button" class="chip" data-v="1">Lower back</button>
+          <button type="button" class="chip" data-v="1">Hips</button>
+          <button type="button" class="chip" data-v="1">Legs</button>
+          <button type="button" class="chip" data-v="1">Arms and hands</button>
+          <button type="button" class="chip" data-v="1">Jaw and head</button>
+        </div></fieldset>
+        <fieldset><legend>What are you after?</legend><div class="chips" data-g="goal" data-single="1">
+          <button type="button" class="chip" data-v="0">Mostly to relax</button>
+          <button type="button" class="chip" data-v="1">Fix a specific problem</button>
+          <button type="button" class="chip" data-v="2">Recovering from an injury</button>
+        </div></fieldset>
+      </div>
+      <div class="bottle" aria-live="polite">
+        <small>We'd book you for</small>
+        <b id="mins">60 min</b>
+        <p id="why">Pick a spot or two and we'll suggest a length.</p>
+        <p class="price" id="pr"></p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Rates</h2>
+    <div class="rates">
+      <div class="rate"><b>30 minutes</b><span>$65</span><small>One area. Good for a tune-up.</small></div>
+      <div class="rate"><b>60 minutes</b><span>$105</span><small>Most people's first visit. Two or three areas.</small></div>
+      <div class="rate"><b>90 minutes</b><span>$145</span><small>Full body, or a lot of work on a stubborn problem.</small></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="insure">
+      <div class="receipt" aria-hidden="true"><b>QUIET ROOM</b>RMT receipt<br>Massage 60 min<br>Reg. # ______<br>Paid: $105.00</div>
+      <div>
+        <h2 style="margin-bottom:.4rem">Your benefits probably cover this.</h2>
+        <p style="margin:0;color:var(--soft)">Every visit gets an RMT receipt with the therapist's registration number. Check your plan for how many visits a year it covers, and bring your card if you want us to direct bill.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="visit">
+    <div>
+      <h2>Find the clinic</h2>
+      <p class="now" id="now">&nbsp;</p>
+      <p>Stony Plain, Alberta. Ground floor, no stairs, parking at the door.</p>
+      <p><a class="btn line" href="https://www.google.com/maps/search/?api=1&amp;query=Stony+Plain+AB" target="_blank" rel="noopener" style="color:var(--forest)">Directions</a></p>
+    </div>
+    <div>
+      <h2>Hours</h2>
+      <table id="hrs"></table>
+    </div>
+  </section>
+</main>
+
+<footer><span>Quiet Room Massage Therapy · Stony Plain, AB · 780-555-0151</span><span>Website by <a href="../mainfront/">Mainfront</a></span></footer>
+<nav class="bar" aria-label="Quick contact"><a href="tel:+17805550151">Call to book</a><a href="sms:+17805550151">Text us</a></nav>
+
+<script>
+(function(){
+  var HOURS=[null,[600,1200],[540,1200],[600,1200],[540,1200],[540,1020],[540,900]];
+  var DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  function edm(){var p={};new Intl.DateTimeFormat('en-US',{timeZone:'America/Edmonton',weekday:'short',hour:'numeric',minute:'numeric',hourCycle:'h23'}).formatToParts(new Date()).forEach(function(x){p[x.type]=x.value});return{d:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(p.weekday),m:(+p.hour%24)*60+(+p.minute)}}
+  function t(m){var h=Math.floor(m/60),mm=m%60,ap=h>=12?'pm':'am';h=h%12||12;return h+(mm?':'+(mm<10?'0':'')+mm:'')+ap}
+  var n=edm(),h=HOURS[n.d],open=h&&n.m>=h[0]&&n.m<h[1],tb=document.getElementById('hrs');
+  for(var i=1;i<=7;i++){var d=i%7,r=tb.insertRow();if(d===n.d)r.className='today';r.insertCell().textContent=DAYS[d];r.insertCell().textContent=HOURS[d]?t(HOURS[d][0])+' to '+t(HOURS[d][1]):'Closed';}
+  // Earliest day you could realistically call and book: next open day
+  var nd,nt;if(open&&n.m<h[1]-60){nd='Today';nt='Call, we may have a spot'}else{for(var k=1;k<=7;k++){var dd=(n.d+k)%7;if(HOURS[dd]){nd=k===1?'Tomorrow':DAYS[dd];nt='from '+t(HOURS[dd][0]);break}}}
+  document.getElementById('aday').textContent=nd;document.getElementById('atime').textContent=nt;
+  var nw=document.getElementById('now');nw.textContent=open?'Open today until '+t(h[1]):'Closed right now. Leave a message and we call back.';
+  // Picker
+  var P={30:'$65',60:'$105',90:'$145'};
+  [].forEach.call(document.querySelectorAll('.chips'),function(g){
+    g.addEventListener('click',function(e){var b=e.target.closest('.chip');if(!b)return;
+      if(g.dataset.single){[].forEach.call(g.children,function(x){if(x!==b)x.setAttribute('aria-pressed','false')})}
+      b.setAttribute('aria-pressed',b.getAttribute('aria-pressed')==='true'?'false':'true');calc();});
+    [].forEach.call(g.children,function(x){x.setAttribute('aria-pressed','false')});
+  });
+  function calc(){
+    var areas=document.querySelectorAll('[data-g=area] [aria-pressed=true]').length;
+    var gb=document.querySelector('[data-g=goal] [aria-pressed=true]'),goal=gb?+gb.dataset.v:-1;
+    var m,why;
+    if(!areas&&goal<0){m=60;why='Pick a spot or two and we’ll suggest a length.'}
+    else if(goal===0){m=areas>=3?90:60;why=areas>=3?'Full body, nothing rushed.':'Enough time to actually switch off.'}
+    else if(areas<=1&&goal!==2){m=areas?30:60;why=areas?'One area, worked properly. Come back in a week or two.':'Tell us where on the phone.'}
+    else if(areas>=4){m=90;why='That’s a lot of areas. 90 gives each one real time.'}
+    else{m=60;why=goal===2?'Injury work goes slower. We’ll check range of motion first.':'Two or three areas, with time for the worst one.'}
+    document.getElementById('mins').textContent=m+' min';document.getElementById('why').textContent=why;document.getElementById('pr').textContent=(areas||goal>=0)?P[m]+' before insurance':'';
+  }
+  calc();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crumb Street Bakehouse (concept demo)</title>
+<meta name="description" content="Concept homepage for a Stony Plain bakery, built by Mainfront.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Gochi+Hand&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Concept: the kraft paper bag with a red rubber stamp, the baker's bake sheet,
+   and the folded tent cards in the pastry case. */
+:root{
+  --kraft:#C8A46E; --kraft-2:#B8925A; --kraft-3:#A57E47; --parch:#F6EEDC; --flour:#FBF7EE;
+  --stamp:#B0362B; --crust:#6E3F1C; --butter:#EBC867; --ink:#2A211B; --soft:#6B5D50;
+  --serif:'Young Serif',Georgia,serif; --hand:'Gochi Hand','Comic Sans MS',cursive;
+  --body:'Work Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;font:17px/1.55 var(--body);color:var(--ink);background:var(--flour);padding-bottom:4.4rem}
+@media(min-width:60rem){body{padding-bottom:0}}
+a{color:inherit}
+.concept{background:var(--crust);color:#F3E3C8;font-size:.8rem;text-align:center;padding:.45rem 1rem}
+.concept a{color:#fff;font-weight:600}
+
+/* The bag */
+.bag{background:var(--kraft);position:relative;padding:3rem 1.25rem 4.2rem;overflow:hidden;
+  background-image:repeating-linear-gradient(90deg,rgba(0,0,0,.035) 0 2px,transparent 2px 7px),repeating-linear-gradient(0deg,rgba(255,255,255,.04) 0 1px,transparent 1px 5px)}
+.bag::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:22px;background:var(--flour);
+  clip-path:polygon(0 100%,0 40%,2.5% 0,5% 40%,7.5% 0,10% 40%,12.5% 0,15% 40%,17.5% 0,20% 40%,22.5% 0,25% 40%,27.5% 0,30% 40%,32.5% 0,35% 40%,37.5% 0,40% 40%,42.5% 0,45% 40%,47.5% 0,50% 40%,52.5% 0,55% 40%,57.5% 0,60% 40%,62.5% 0,65% 40%,67.5% 0,70% 40%,72.5% 0,75% 40%,77.5% 0,80% 40%,82.5% 0,85% 40%,87.5% 0,90% 40%,92.5% 0,95% 40%,97.5% 0,100% 40%,100% 100%)}
+.fold{position:absolute;left:0;right:0;top:0;height:2.4rem;background:var(--kraft-2);border-bottom:2px solid var(--kraft-3)}
+.bag-in{max-width:68rem;margin:0 auto;display:grid;gap:2rem;align-items:center;position:relative}
+@media(min-width:56rem){.bag-in{grid-template-columns:20rem 1fr;gap:3rem}}
+.stampsvg{width:min(18rem,72vw);justify-self:center;transform:rotate(-7deg);mix-blend-mode:multiply;opacity:.92}
+.bag h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.4rem,7vw,4.4rem);line-height:.98;margin:0;color:var(--ink)}
+.bag p.sub{font-size:1.1rem;max-width:30rem;margin:1rem 0 1.5rem;color:#3B2D20}
+.btn{display:inline-block;font:600 1rem var(--body);text-decoration:none;background:var(--stamp);color:#fff;padding:.85rem 1.2rem;border-radius:2px}
+.btn.line{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
+.btn:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.btns{display:flex;flex-wrap:wrap;gap:.7rem}
+.tape{position:absolute;right:6%;top:3.2rem;background:rgba(251,247,238,.75);padding:.35rem 1.4rem;transform:rotate(4deg);font:1.2rem var(--hand);color:var(--stamp);display:none}
+@media(min-width:56rem){.tape{display:block}}
+
+main{max-width:68rem;margin:0 auto;padding:0 1.25rem}
+section{padding:3rem 0 .5rem}
+h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.9rem,4.6vw,2.7rem);line-height:1.05;margin:0 0 .5rem}
+.lede{color:var(--soft);max-width:36rem;margin:0 0 1.5rem}
+
+/* Bake sheet */
+.sheet{background:var(--parch);border:1px solid #E5D7B8;padding:1.4rem 1.3rem 1.2rem;max-width:44rem;position:relative;box-shadow:0 2px 0 #E5D7B8}
+.sheet::before{content:"";position:absolute;top:-14px;left:50%;width:5rem;height:28px;margin-left:-2.5rem;background:#9A9C9E;border-radius:4px 4px 0 0;clip-path:polygon(10% 0,90% 0,100% 100%,0 100%)}
+.sheet h3{font:1.6rem var(--hand);margin:0 0 .6rem;color:var(--crust)}
+.row{display:grid;grid-template-columns:4.6rem 1fr auto;gap:.8rem;align-items:baseline;padding:.55rem 0;border-bottom:1px dashed #D9C8A4;font-family:var(--hand);font-size:1.25rem}
+.row time{color:var(--soft)}
+.row em{font-style:normal;font:600 .72rem var(--body);letter-spacing:.08em;text-transform:uppercase;padding:.2rem .45rem;border-radius:2px}
+.row.warm em{background:var(--stamp);color:#fff}
+.row.soon em{background:var(--butter);color:var(--ink)}
+.row.done{color:#9C8E7E}.row.done span{text-decoration:line-through;text-decoration-thickness:2px}
+.row.done em{color:#9C8E7E}
+.sheet .note{font:1.1rem var(--hand);color:var(--soft);margin:.8rem 0 0}
+
+/* Tent cards in the case */
+.case{background:#3A2A1F;padding:2rem 1.2rem 0;border-top:12px solid #8D6A48;position:relative}
+.case::after{content:"";display:block;height:14px;margin:0 -1.2rem;background:#E9E1D3;border-top:2px solid #B9AE9C}
+.cards{display:flex;flex-wrap:wrap;gap:1.6rem 1.2rem;justify-content:center;padding-bottom:1.6rem}
+.tent{background:#fff;color:var(--ink);padding:.9rem 1rem .8rem;width:12.5rem;position:relative;border-bottom:6px solid #E3DED4;text-align:center}
+.tent:nth-child(2n){transform:rotate(-2deg)}.tent:nth-child(3n){transform:rotate(1.5deg)}
+.tent b{display:block;font:1.4rem/1.1 var(--hand)}
+.tent span{display:block;font-size:.85rem;color:var(--soft);margin-top:.3rem}
+.tent i{display:block;font:normal 1.3rem var(--serif);color:var(--stamp);margin-top:.4rem}
+.tent.wide{width:17rem}
+
+/* Saturday box */
+.box{display:grid;gap:1.4rem;align-items:center;margin-top:1rem;padding:1.6rem;border:2px solid var(--ink);background:var(--flour)}
+@media(min-width:52rem){.box{grid-template-columns:1fr auto}}
+.box p{margin:.3rem 0 0;color:var(--soft)}
+
+.visit{display:grid;gap:2rem}
+@media(min-width:52rem){.visit{grid-template-columns:1fr 1fr}}
+table{border-collapse:collapse;width:100%}
+td{padding:.5rem 0;border-bottom:1px solid #E6DCC8}
+td:last-child{text-align:right;font-variant-numeric:tabular-nums}
+tr.today td{font-weight:600;color:var(--stamp)}
+.openline{font:1.5rem var(--hand);margin:0 0 .6rem}
+.openline.o{color:#2F6B2F}.openline.c{color:var(--stamp)}
+footer{margin-top:3.4rem;background:var(--kraft);padding:1.3rem 1.25rem;display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem;font-size:.9rem;color:#3B2D20}
+.bar{position:fixed;left:0;right:0;bottom:0;display:grid;grid-template-columns:1fr 1fr;z-index:9}
+.bar a{text-align:center;padding:1rem .4rem;text-decoration:none;font-weight:600;background:var(--ink);color:#fff}
+.bar a:first-child{background:var(--stamp)}
+.bar a:focus-visible{outline:3px solid var(--butter);outline-offset:-3px}
+@media(min-width:60rem){.bar{display:none}}
+</style>
+</head>
+<body>
+<div class="concept">Concept demo by <a href="../mainfront/">Mainfront</a>. Crumb Street is a made-up bakery; your name, bakes and photos go here.</div>
+
+<header class="bag">
+  <div class="fold" aria-hidden="true"></div>
+  <div class="tape" aria-hidden="true">baked this morning</div>
+  <div class="bag-in">
+    <svg class="stampsvg" viewBox="0 0 300 300" role="img" aria-label="Crumb Street Bakehouse stamp">
+      <defs><path id="ring" d="M150 150 m-112 0 a112 112 0 1 1 224 0 a112 112 0 1 1 -224 0"/>
+      <filter id="rough"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2.2 1.6" result="m"/><feComposite in="SourceGraphic" in2="m" operator="in"/></filter></defs>
+      <g fill="none" stroke="#B0362B" filter="url(#rough)">
+        <circle cx="150" cy="150" r="140" stroke-width="7"/>
+        <circle cx="150" cy="150" r="88" stroke-width="3"/>
+        <text font-family="Young Serif,Georgia,serif" font-size="25" letter-spacing="5" fill="#B0362B" stroke="none"><textPath href="#ring" startOffset="2%">CRUMB STREET · BAKEHOUSE · STONY PLAIN ·</textPath></text>
+        <path d="M110 160 q40 -58 80 0 q-40 16 -80 0z" stroke-width="5" fill="#B0362B"/>
+        <path d="M129 143 l9 12 M150 134 l0 16 M171 143 l-9 12" stroke="#C8A46E" stroke-width="4" stroke-linecap="round"/>
+        <text x="150" y="122" text-anchor="middle" font-family="Young Serif,Georgia,serif" font-size="22" fill="#B0362B" stroke="none">EST.</text>
+        <text x="150" y="214" text-anchor="middle" font-family="Young Serif,Georgia,serif" font-size="17" fill="#B0362B" stroke="none" letter-spacing="3">SOURDOUGH</text>
+      </g>
+    </svg>
+    <div>
+      <h1>Bread that was dough at 4 this morning.</h1>
+      <p class="sub">Sourdough, cinnamon buns and the good kind of butter tarts, out of a small oven in Stony Plain.</p>
+      <div class="btns">
+        <a class="btn" href="#oven">What's warm right now</a>
+        <a class="btn line" href="tel:+17805550163">Call to pre-order</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="oven">
+    <h2>The bake sheet</h2>
+    <p class="lede">The baker's list, pinned by the oven. Anything stamped <b>warm</b> came out in the last hour.</p>
+    <div class="sheet" aria-live="polite">
+      <h3 id="sday">Bake sheet</h3>
+      <div id="rows"></div>
+      <p class="note" id="snote"></p>
+    </div>
+  </section>
+
+  <section>
+    <h2>In the case</h2>
+    <p class="lede">Prices on the cards are placeholders until the bakery sends theirs.</p>
+    <div class="case">
+      <div class="cards">
+        <div class="tent wide"><b>Country sourdough</b><span>Three-day loaf, crackly crust</span><i>$&nbsp;&mdash;</i></div>
+        <div class="tent"><b>Cinnamon buns</b><span>Cream cheese icing, sold by the half dozen too</span><i>$&nbsp;&mdash;</i></div>
+        <div class="tent"><b>Butter tarts</b><span>Runny. Raisins on Fridays.</span><i>$&nbsp;&mdash;</i></div>
+        <div class="tent"><b>Morning buns</b><span>Orange zest and sugar</span><i>$&nbsp;&mdash;</i></div>
+        <div class="tent wide"><b>Sandwich loaf</b><span>Soft white or seeded, sliced if you ask</span><i>$&nbsp;&mdash;</i></div>
+        <div class="tent"><b>Cookies</b><span>Brown butter chocolate chip</span><i>$&nbsp;&mdash;</i></div>
+      </div>
+    </div>
+    <div class="box">
+      <div><h2 style="margin:0">The Saturday box</h2><p>Call by Thursday at 4 and a box of buns, tarts and a loaf is waiting with your name on it.</p></div>
+      <a class="btn" href="tel:+17805550163">Reserve a box</a>
+    </div>
+  </section>
+
+  <section class="visit">
+    <div>
+      <h2>Come by</h2>
+      <p class="openline" id="openline">&nbsp;</p>
+      <p>Main Street, Stony Plain. Street parking out front. When the sourdough is gone, it's gone.</p>
+      <p><a class="btn line" href="https://www.google.com/maps/search/?api=1&amp;query=Stony+Plain+AB" target="_blank" rel="noopener">Get directions</a></p>
+    </div>
+    <div>
+      <h2>Hours</h2>
+      <table id="hrs"></table>
+    </div>
+  </section>
+</main>
+
+<footer><span>Crumb Street Bakehouse · Stony Plain, AB · 780-555-0163</span><span>Website by <a href="../mainfront/">Mainfront</a></span></footer>
+<nav class="bar" aria-label="Quick contact"><a href="tel:+17805550163">Call to pre-order</a><a href="https://www.google.com/maps/search/?api=1&amp;query=Stony+Plain+AB" target="_blank" rel="noopener">Directions</a></nav>
+
+<script>
+(function(){
+  var HOURS=[null,null,[420,900],[420,900],[420,900],[420,960],[480,840]]; // closed Sun & Mon
+  var DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  var BAKE=[[390,'Country sourdough'],[420,'Morning buns'],[450,'Sandwich loaves'],[510,'Cinnamon buns'],[570,'Butter tarts'],[660,'Cookies'],[720,'Second sourdough bake']];
+  function edm(){var p={};new Intl.DateTimeFormat('en-US',{timeZone:'America/Edmonton',weekday:'short',hour:'numeric',minute:'numeric',hourCycle:'h23'}).formatToParts(new Date()).forEach(function(x){p[x.type]=x.value});return{d:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(p.weekday),m:(+p.hour%24)*60+(+p.minute)}}
+  function t(m){var h=Math.floor(m/60),mm=m%60,ap=h>=12?'pm':'am';h=h%12||12;return h+(mm?':'+(mm<10?'0':'')+mm:'')+ap}
+  var n=edm(),h=HOURS[n.d],open=h&&n.m>=h[0]&&n.m<h[1];
+  var tb=document.getElementById('hrs');
+  for(var i=1;i<=7;i++){var d=i%7,r=tb.insertRow();if(d===n.d)r.className='today';r.insertCell().textContent=DAYS[d];r.insertCell().textContent=HOURS[d]?t(HOURS[d][0])+' to '+t(HOURS[d][1]):'Closed (we’re sleeping)';}
+  var ol=document.getElementById('openline');
+  if(open){ol.textContent='Open now, until '+t(h[1]);ol.className='openline o'}
+  else{var nx;if(h&&n.m<h[0])nx='today at '+t(h[0]);else for(var k=1;k<=7;k++){var dd=(n.d+k)%7;if(HOURS[dd]){nx=(k===1?'tomorrow':DAYS[dd])+' at '+t(HOURS[dd][0]);break}}ol.textContent='Closed. Doors open '+nx;ol.className='openline c'}
+  // Bake sheet: if closed today, show the next baking day's sheet
+  var rows=document.getElementById('rows'),sd=document.getElementById('sday'),sn=document.getElementById('snote');
+  var baking=!!h&&n.m<h[1];
+  if(baking){sd.textContent=DAYS[n.d]+"'s bake sheet"}else{var nd;for(var j=1;j<=7;j++){if(HOURS[(n.d+j)%7]){nd=(n.d+j)%7;break}}sd.textContent=DAYS[nd]+"'s bake sheet"}
+  rows.innerHTML=BAKE.map(function(b){
+    var cls='',tag='';
+    if(baking){var age=n.m-b[0];if(age>=0&&age<60){cls='warm';tag='warm'}else if(age<0&&age>-45){cls='soon';tag='in the oven'}else if(age>=60){cls='done';tag='out'}}
+    return '<div class="row '+cls+'"><time>'+t(b[0])+'</time><span>'+b[1]+'</span>'+(tag?'<em>'+tag+'</em>':'<em></em>')+'</div>';
+  }).join('');
+  sn.textContent=baking?(open?'Ask at the counter what’s still on the rack.':'Doors open at '+t(h[0])+'. The first loaves are already cooling.'):'Ovens are off. This is what comes out next time.';
+})();
+</script>
+</body>
+</html>

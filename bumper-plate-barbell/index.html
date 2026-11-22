@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bumper Plate Barbell Club (concept demo)</title>
+<meta name="description" content="Concept homepage for a Stony Plain strength gym, built by Mainfront.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Extra+Condensed:wght@700;900&family=Permanent+Marker&family=Archivo:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* Concept: the gym floor. Black rubber tiles, competition bumper plates in their real colours
+   (red 25, blue 20, yellow 15, green 10, white 5), and the whiteboard with today's workout in marker. */
+:root{
+  --rubber:#161616; --rubber-2:#1F1F1F; --board:#F7F8F6; --frame:#B9BEC2; --chalk:#ECECE8;
+  --red:#D6262B; --blue:#1F5BB5; --yellow:#F2C418; --green:#2E8B3E; --white:#F4F4F2; --ink:#121212; --soft:#6A6E72;
+  --cond:'Saira Extra Condensed','Arial Narrow',sans-serif; --marker:'Permanent Marker','Comic Sans MS',cursive;
+  --body:'Archivo',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;font:17px/1.55 var(--body);color:var(--chalk);background:var(--rubber);padding-bottom:4.4rem;
+  background-image:linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px);background-size:140px 140px}
+@media(min-width:60rem){body{padding-bottom:0}}
+a{color:inherit}
+.concept{background:#000;color:#A9ADB1;font-size:.8rem;text-align:center;padding:.45rem 1rem}
+.concept a{color:#fff;font-weight:700}
+
+header{max-width:74rem;margin:0 auto;padding:2.6rem 1.25rem 1rem;display:grid;gap:2.2rem}
+@media(min-width:58rem){header{grid-template-columns:1fr 1.1fr;align-items:center;padding-top:3.4rem}}
+.plates{display:flex;align-items:center;gap:0;margin-bottom:1.2rem;height:6rem}
+.plates .bar{height:14px;width:3rem;background:#9EA3A7}
+.plates .p{width:1.15rem;border-radius:3px;margin-right:2px}
+.plates .collar{width:.8rem;height:2.4rem;background:#5A5F64;margin-right:2px;border-radius:2px}
+header h1{font:900 clamp(3.4rem,11vw,7rem)/.82 var(--cond);text-transform:uppercase;margin:0;color:#fff;letter-spacing:.005em}
+header h1 span{display:block;color:var(--yellow)}
+.lede{max-width:31rem;margin:1.1rem 0 1.5rem;color:#C8CBCE}
+.btn{display:inline-block;font:700 1.3rem/1 var(--cond);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;padding:.85rem 1.25rem;background:var(--red);color:#fff;border:0;cursor:pointer}
+.btn.line{background:transparent;box-shadow:inset 0 0 0 2px #fff}
+.btn:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+.btns{display:flex;flex-wrap:wrap;gap:.7rem}
+
+/* Whiteboard */
+.board{background:var(--board);color:#1B1B1B;border:12px solid var(--frame);border-bottom-width:20px;padding:1.3rem 1.4rem 1.4rem;position:relative;transform:rotate(.6deg)}
+.board::after{content:"";position:absolute;left:10%;right:10%;bottom:-20px;height:8px;background:#8D9397}
+.magnet{position:absolute;top:-6px;width:22px;height:22px;border-radius:50%;background:var(--red);box-shadow:inset -3px -3px 0 rgba(0,0,0,.2)}
+.board h2{font:1.7rem/1 var(--marker);color:var(--blue);margin:0 0 .6rem}
+.board .line{font:1.25rem/1.55 var(--marker);margin:0}
+.board .line.r{color:var(--red)}
+.board .line small{font:inherit;font-size:.95rem;color:#555}
+.board hr{border:0;border-top:2px dashed #C9CDD0;margin:.7rem 0}
+.board .next{font:1.1rem var(--marker);color:var(--green)}
+
+main{max-width:74rem;margin:0 auto;padding:0 1.25rem}
+section{padding:3.6rem 0 .6rem}
+h2.h{font:900 clamp(2.3rem,6vw,3.6rem)/.9 var(--cond);text-transform:uppercase;margin:0 0 .6rem;color:#fff}
+.sub{color:#B5B9BC;max-width:34rem;margin:0 0 1.6rem}
+
+/* Plate math */
+.math{display:grid;gap:1.6rem;background:var(--rubber-2);border:1px solid #2C2C2C;padding:1.6rem 1.3rem}
+@media(min-width:56rem){.math{grid-template-columns:18rem 1fr;padding:2rem}}
+.math label{display:block;font:700 .95rem var(--cond);letter-spacing:.14em;text-transform:uppercase;color:#9DA1A5;margin-top:.8rem}
+.math input,.math select{display:block;width:100%;margin-top:.3rem;font:900 2rem var(--cond);background:#0E0E0E;color:#fff;border:0;border-bottom:3px solid var(--red);padding:.3rem .6rem}
+.math input:focus-visible,.math select:focus-visible{outline:2px solid var(--yellow)}
+.loaded{display:flex;align-items:center;justify-content:center;min-height:13rem;overflow-x:auto;padding:.6rem 0}
+.loaded .shaft{height:16px;background:#A9AEB2;flex:none}
+.loaded .sleeve{height:24px;width:1.4rem;background:#C9CDD0;flex:none}
+.loaded .pl{flex:none;border-radius:4px;margin-left:2px;display:flex;align-items:center;justify-content:center;font:900 .9rem var(--cond);writing-mode:vertical-rl;color:#fff}
+.out{text-align:center;font:700 1.4rem var(--cond);text-transform:uppercase;letter-spacing:.04em;margin:.4rem 0 0}
+.out small{display:block;font:400 .95rem var(--body);text-transform:none;letter-spacing:0;color:#A6AAAE}
+
+/* Schedule */
+.sched{border-top:3px solid #fff}
+.cls{display:grid;grid-template-columns:5.5rem 1fr auto;gap:1rem;align-items:baseline;padding:.8rem 0;border-bottom:1px solid #2E2E2E}
+.cls time{font:900 1.5rem var(--cond)}
+.cls b{font-weight:700}
+.cls span{color:#9DA1A5;font-size:.92rem}
+.cls em{font:normal 700 .8rem var(--cond);letter-spacing:.12em;text-transform:uppercase;padding:.25rem .5rem;background:#2A2A2A;color:#B5B9BC}
+.cls.now em{background:var(--yellow);color:#111}
+.cls.next em{background:var(--green);color:#fff}
+.cls.past{opacity:.45}
+
+/* Memberships on a plate rack */
+.rack{display:grid;gap:1rem}
+@media(min-width:52rem){.rack{grid-template-columns:1.2fr 1fr 1fr}}
+.mem{background:var(--rubber-2);border-left:10px solid var(--c);padding:1.1rem 1.2rem}
+.mem b{display:block;font:900 1.8rem/1 var(--cond);text-transform:uppercase;color:#fff}
+.mem i{display:block;font:normal 900 2.6rem/1 var(--cond);color:var(--c);margin:.3rem 0}
+.mem span{color:#B5B9BC;font-size:.95rem}
+.mem.big{border-left-width:16px}
+
+footer{margin-top:3.6rem;border-top:6px solid var(--red);padding:1.4rem 1.25rem;display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem;font-size:.88rem;color:#9DA1A5}
+footer a{color:#fff}
+.callbar{position:fixed;left:0;right:0;bottom:0;display:grid;grid-template-columns:1fr 1fr;z-index:9;font:700 1.2rem var(--cond);letter-spacing:.06em;text-transform:uppercase}
+.callbar a{text-align:center;padding:1rem .4rem;text-decoration:none;background:#000;color:#fff}
+.callbar a:first-child{background:var(--red)}
+.callbar a:focus-visible{outline:3px solid var(--yellow);outline-offset:-3px}
+@media(min-width:60rem){.callbar{display:none}}
+</style>
+</head>
+<body>
+<div class="concept">Concept demo by <a href="../mainfront/">Mainfront</a>. Bumper Plate is a made-up gym and the prices are samples; yours go here.</div>
+
+<header>
+  <div>
+    <div class="plates" aria-hidden="true"><span class="bar"></span><span class="collar"></span><span class="p" style="height:6rem;background:var(--red)"></span><span class="p" style="height:6rem;background:var(--blue)"></span><span class="p" style="height:5rem;background:var(--yellow)"></span><span class="p" style="height:4.2rem;background:var(--green)"></span><span class="p" style="height:3rem;background:var(--white)"></span></div>
+    <h1>Bumper Plate<span>Barbell Club</span></h1>
+    <p class="lede">A strength gym in Stony Plain. Coached barbell classes, open gym with real platforms, and nobody judging what's on your bar.</p>
+    <div class="btns"><a class="btn" href="tel:+17805550196">Book a free first class</a><a class="btn line" href="#times">Class times</a></div>
+  </div>
+  <div class="board" aria-live="polite">
+    <i class="magnet" style="left:12%"></i><i class="magnet" style="right:12%;background:var(--blue)"></i>
+    <h2 id="wday">Today</h2>
+    <p class="line" id="w1"></p>
+    <p class="line" id="w2"></p>
+    <p class="line r" id="w3"></p>
+    <hr>
+    <p class="next" id="wnext">&nbsp;</p>
+  </div>
+</header>
+
+<main>
+  <section>
+    <h2 class="h">Plate math</h2>
+    <p class="sub">Type the weight you're going for. We'll tell you what goes on each side, in the same colours as the plates on the floor.</p>
+    <div class="math">
+      <div>
+        <label for="target">Total weight (kg)</label>
+        <input id="target" type="number" inputmode="decimal" value="102.5" step="2.5" min="0">
+        <label for="barw">Bar</label>
+        <select id="barw"><option value="20">20 kg men's bar</option><option value="15">15 kg women's bar</option></select>
+      </div>
+      <div>
+        <div class="loaded" id="loaded" aria-hidden="true"></div>
+        <p class="out" id="out" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="times">
+    <h2 class="h">Class times</h2>
+    <p class="sub" id="tday">Today's classes. Show up 10 minutes early for your first one.</p>
+    <div class="sched" id="sched"></div>
+  </section>
+
+  <section>
+    <h2 class="h">Memberships</h2>
+    <p class="sub">No sign-up fee. Freeze any time you're injured or away.</p>
+    <div class="rack">
+      <div class="mem big" style="--c:var(--red)"><b>Unlimited</b><i>$95/mo</i><span>Every class plus open gym.</span></div>
+      <div class="mem" style="--c:var(--blue)"><b>2x a week</b><i>$70/mo</i><span>Eight classes a month.</span></div>
+      <div class="mem" style="--c:var(--yellow)"><b>Open gym</b><i>$50/mo</i><span>Platforms and racks, no coaching.</span></div>
+    </div>
+  </section>
+</main>
+
+<footer><span>Bumper Plate Barbell Club · Stony Plain, AB · 780-555-0196</span><span>Website by <a href="../mainfront/">Mainfront</a></span></footer>
+<nav class="callbar" aria-label="Quick contact"><a href="tel:+17805550196">Free class</a><a href="https://www.google.com/maps/search/?api=1&amp;query=Stony+Plain+AB" target="_blank" rel="noopener">Directions</a></nav>
+
+<script>
+(function(){
+  var DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  var WK=[['Rest day. Walk, stretch,','come back Monday.','Mobility 10:00'],
+          ['Back squat 5x5','Then 3 rounds: 10 KB swings, 10 push-ups','Finisher: 500m row'],
+          ['Bench 5x5','Pull-ups, 5 sets to near failure','Farmer carries 4x40m'],
+          ['Deadlift 3x5','Then 12 min: 6 box jumps, 8 goblet squats','Plank 3x45s'],
+          ['Overhead press 5x5','Dips and rows, 4x8','Sled push 6x20m'],
+          ['Front squat 4x6','Then partner WOD, 20 min','Have a good weekend'],
+          ['Team workout','Bring a friend, they train free','Coffee after']];
+  var SCHED={0:[[600,'Mobility and stretch','45 min']],
+             1:[[360,'Strength','6:00 am'],[720,'Lunch hour lift','noon'],[1020,'Strength','5:00 pm'],[1110,'Strength','6:30 pm']],
+             2:[[360,'Strength','6:00 am'],[1020,'Strength','5:00 pm'],[1110,'Beginners','6:30 pm']],
+             3:[[360,'Strength','6:00 am'],[720,'Lunch hour lift','noon'],[1020,'Strength','5:00 pm'],[1110,'Strength','6:30 pm']],
+             4:[[360,'Strength','6:00 am'],[1020,'Strength','5:00 pm'],[1110,'Beginners','6:30 pm']],
+             5:[[360,'Strength','6:00 am'],[1020,'Open gym','5:00 pm']],
+             6:[[540,'Team workout','9:00 am'],[630,'Olympic lifting','10:30 am']]};
+  function edm(){var p={};new Intl.DateTimeFormat('en-US',{timeZone:'America/Edmonton',weekday:'short',hour:'numeric',minute:'numeric',hourCycle:'h23'}).formatToParts(new Date()).forEach(function(x){p[x.type]=x.value});return{d:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(p.weekday),m:(+p.hour%24)*60+(+p.minute)}}
+  function t(m){var h=Math.floor(m/60),mm=m%60,ap=h>=12?'pm':'am';h=h%12||12;return h+(mm?':'+(mm<10?'0':'')+mm:'')+' '+ap}
+  var n=edm(),w=WK[n.d];
+  document.getElementById('wday').textContent=DAYS[n.d]+"'s workout";
+  document.getElementById('w1').textContent=w[0];document.getElementById('w2').textContent=w[1];document.getElementById('w3').textContent=w[2];
+  // Schedule with now/next
+  var list=SCHED[n.d],box=document.getElementById('sched'),nextFound=false,html='',nextTxt='';
+  list.forEach(function(c){
+    var st=c[0],en=st+60,cls='',tag='';
+    if(n.m>=st&&n.m<en){cls='now';tag='on now'}
+    else if(n.m<st&&!nextFound){nextFound=true;cls='next';var mins=st-n.m;tag=mins<60?'in '+mins+' min':'next';nextTxt='Next class: '+c[1]+' at '+t(st)}
+    else if(n.m>=en){cls='past';tag='done'}
+    html+='<div class="cls '+cls+'"><time>'+t(st).replace(' ','')+'</time><div><b>'+c[1]+'</b><br><span>'+(c[1]==='Beginners'?'Bar path, bracing and a lot of coaching':'Coached, all levels')+'</span></div><em>'+(tag||'&nbsp;')+'</em></div>';
+  });
+  box.innerHTML=html;
+  if(!nextTxt){var nd=(n.d+1)%7,f=SCHED[nd][0];nextTxt='Done for today. '+(nd===(n.d+1)%7?'Tomorrow':DAYS[nd])+': '+f[1]+' at '+t(f[0]);}
+  document.getElementById('wnext').textContent=nextTxt;
+  // Plate math
+  var PL=[[25,'var(--red)',10.5],[20,'var(--blue)',10.5],[15,'var(--yellow)',9.2],[10,'var(--green)',7.8],[5,'var(--white)',5.6],[2.5,'#C0392B',4.2],[1.25,'#9EA3A7',3.4]];
+  var tg=document.getElementById('target'),bw=document.getElementById('barw'),ld=document.getElementById('loaded'),out=document.getElementById('out');
+  function run(){
+    var total=+tg.value,bar=+bw.value,side=(total-bar)/2,used=[];
+    if(!(total>=bar)){ld.innerHTML='<span class="shaft" style="width:60%"></span>';out.innerHTML='Just the bar<small>That’s '+bar+' kg. Everyone starts somewhere.</small>';return}
+    var rem=side;PL.forEach(function(p){while(rem>=p[0]-1e-9){used.push(p);rem-=p[0]}});
+    rem=Math.round(rem*100)/100;
+    var plates=used.map(function(p){var big=p[0]>=10;return '<span class="pl" style="height:'+p[2]+'rem;width:'+(big?2.1:1.4)+'rem;background:'+p[1]+';color:'+(p[0]===15||p[0]===5||p[0]===1.25?'#111':'#fff')+'">'+p[0]+'</span>'}).join('');
+    ld.innerHTML='<span class="shaft" style="width:4rem"></span><span class="sleeve"></span>'+plates+'<span class="sleeve" style="width:.8rem;background:#5A5F64;height:2.2rem;margin-left:2px"></span><span class="shaft" style="width:2rem"></span>';
+    var list=used.map(function(p){return p[0]}).join(' + ');
+    out.innerHTML=(used.length?list+' kg each side':'Nothing on the sleeves')+'<small>'+(rem?'Closest we can load is '+(total-rem*2)+' kg with standard plates.':'That’s '+total+' kg on the bar. Collars on.')+'</small>';
+  }
+  tg.addEventListener('input',run);bw.addEventListener('change',run);run();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bay Two Auto Service (concept demo)</title>
+<meta name="description" content="Concept homepage for a Stony Plain auto repair shop, built by Mainfront.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Stardos+Stencil:wght@700&family=Barlow+Condensed:wght@600;800&family=Barlow:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* Concept: the shop bay. A roll-up door, a stencilled bay number, the manila key tag
+   that hangs off your keys, and a carbon repair order. */
+:root{
+  --concrete:#D2CDC3; --concrete-2:#C2BCB0; --steel:#4A5058; --steel-2:#5A616A; --black:#17191C;
+  --manila:#E8D7A1; --manila-2:#D6C385; --yellow:#F2C230; --red:#C62F23; --ink:#1B1D20; --soft:#5C6066;
+  --stencil:'Stardos Stencil',Impact,sans-serif; --cond:'Barlow Condensed','Arial Narrow',sans-serif;
+  --body:'Barlow',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;font:17px/1.5 var(--body);color:var(--ink);background:var(--concrete);padding-bottom:4.4rem}
+@media(min-width:60rem){body{padding-bottom:0}}
+a{color:inherit}
+.concept{background:var(--black);color:#BFC2C6;font-size:.8rem;text-align:center;padding:.45rem 1rem}
+.concept a{color:#fff;font-weight:700}
+
+/* Roll-up door */
+.bay{background:var(--black);padding:0 14px}
+.frame{max-width:74rem;margin:0 auto;border-inline:14px solid var(--yellow);position:relative;
+  background:repeating-linear-gradient(180deg,var(--steel) 0 34px,var(--steel-2) 34px 38px,#3C4148 38px 42px)}
+.frame::before{content:"";position:absolute;inset:0 -14px auto -14px;height:14px;background:repeating-linear-gradient(-45deg,var(--yellow) 0 14px,var(--black) 14px 28px)}
+.door{padding:3.2rem 1.4rem 2.4rem;display:grid;gap:1.6rem;align-items:end}
+@media(min-width:56rem){.door{grid-template-columns:1fr 17rem;padding:4rem 2.4rem 3rem}}
+.num2{font-family:var(--stencil);font-weight:700;color:#E9E6DF;font-size:clamp(4.6rem,17vw,10rem);line-height:.8;margin:0;letter-spacing:.02em}
+.num2 small{display:block;font-size:.32em;letter-spacing:.12em;margin-bottom:.4rem;color:var(--yellow)}
+.door h1{font-family:var(--cond);font-weight:800;text-transform:uppercase;font-size:clamp(1.6rem,4.6vw,2.5rem);line-height:1;margin:1.2rem 0 .4rem;color:#fff;letter-spacing:.02em}
+.door p{color:#D9DCE0;margin:0;max-width:34rem}
+.cta{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.4rem}
+.btn{font:800 1.15rem/1 var(--cond);text-transform:uppercase;letter-spacing:.04em;text-decoration:none;padding:.9rem 1.3rem;background:var(--yellow);color:var(--black);display:inline-block;border:0;cursor:pointer}
+.btn.ghost{background:transparent;color:#fff;box-shadow:inset 0 0 0 2px #fff}
+.btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
+
+/* Key tag (live) */
+.tag{justify-self:start;position:relative;width:15.5rem;background:var(--manila);color:var(--ink);padding:2.6rem 1.1rem 1.1rem;clip-path:polygon(18% 0,82% 0,100% 12%,100% 100%,0 100%,0 12%);transform:rotate(-4deg);transform-origin:50% 0}
+.tag::before{content:"";position:absolute;left:50%;top:.8rem;width:1.1rem;height:1.1rem;margin-left:-.55rem;border-radius:50%;background:var(--black);box-shadow:0 0 0 4px var(--manila-2)}
+.tag .lbl{font:600 .8rem var(--cond);letter-spacing:.14em;text-transform:uppercase;color:var(--soft);border-bottom:1px solid #B9A76E;padding-bottom:.3rem;margin-bottom:.5rem;display:flex;justify-content:space-between}
+.tag b{display:block;font:800 1.9rem/1 var(--cond);text-transform:uppercase}
+.tag b.up{color:#1E6B34}.tag b.down{color:var(--red)}
+.tag span{display:block;font-size:.92rem;margin-top:.35rem}
+.tag .hand{font:700 1.05rem var(--cond);color:#2C3E8F;margin-top:.6rem;border-top:1px dashed #B9A76E;padding-top:.45rem}
+
+/* Tread divider */
+.tread{height:26px;background:
+  repeating-linear-gradient(60deg,transparent 0 10px,var(--black) 10px 20px),
+  repeating-linear-gradient(-60deg,transparent 0 10px,var(--black) 10px 20px);background-color:#2A2D31;opacity:.9}
+
+main{max-width:74rem;margin:0 auto;padding:0 1.25rem}
+section{padding:3.2rem 0 .6rem}
+h2{font:800 clamp(2rem,5vw,2.9rem)/1 var(--cond);text-transform:uppercase;margin:0 0 .5rem;letter-spacing:.01em}
+.lede{color:var(--soft);margin:0 0 1.4rem;max-width:38rem}
+
+/* Repair order */
+.ro{background:#fff;max-width:52rem;border-top:8px solid var(--red);box-shadow:0 1px 0 var(--concrete-2),6px 8px 0 rgba(0,0,0,.12)}
+.ro-head{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.6rem;padding:1rem 1.2rem;border-bottom:2px solid var(--ink);font-family:var(--cond);font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+.ro-head span{color:var(--red)}
+.ro table{width:100%;border-collapse:collapse}
+.ro th{font:600 .78rem var(--cond);letter-spacing:.14em;text-transform:uppercase;color:var(--soft);text-align:left;padding:.6rem 1.2rem;border-bottom:1px solid #DDD}
+.ro td{padding:.8rem 1.2rem;border-bottom:1px solid #E7E7E7;vertical-align:top}
+.ro td:first-child{font:700 .9rem var(--cond);color:var(--soft);width:3.5rem}
+.ro td b{display:block;font-size:1.05rem}
+.ro td small{color:var(--soft);font-size:.92rem}
+.ro td:last-child{text-align:right;white-space:nowrap;font:700 1rem var(--cond);color:var(--soft)}
+.ro .sig{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;padding:1rem 1.2rem 1.3rem;font-size:.9rem;color:var(--soft)}
+.ro .sig i{font-style:normal;border-bottom:1px solid var(--ink);min-width:12rem;display:inline-block}
+
+/* Oil due calculator */
+.calc{display:grid;gap:1.4rem;background:var(--black);color:#E7E8EA;padding:1.8rem 1.4rem}
+@media(min-width:52rem){.calc{grid-template-columns:1fr 1fr;padding:2.4rem}}
+.calc h2{color:#fff}
+.calc label{display:block;font:600 .85rem var(--cond);letter-spacing:.12em;text-transform:uppercase;color:#AEB2B8;margin-top:.9rem}
+.calc input{display:block;width:100%;margin-top:.3rem;font:700 1.6rem var(--cond);background:#24272B;color:#fff;border:0;border-bottom:3px solid var(--yellow);padding:.4rem .6rem}
+.calc input:focus-visible{outline:2px solid #fff}
+.odo{align-self:center;text-align:center}
+.odo .digits{display:inline-flex;gap:3px;background:#0B0C0E;padding:.5rem;border:2px solid #3A3E44}
+.odo .digits span{font:700 2.2rem/1 var(--cond);background:#1F2226;color:#fff;width:1.9rem;padding:.35rem 0}
+.odo .digits span.r{background:#EEE;color:var(--black)}
+.odo p{margin:.8rem 0 0;font:800 1.5rem/1.1 var(--cond);text-transform:uppercase}
+.odo p.late{color:#FF7A6E}.odo p.ok{color:var(--yellow)}
+.odo small{display:block;color:#AEB2B8;margin-top:.3rem}
+
+/* Season strip */
+.swap{border:4px dashed var(--black);padding:1.2rem 1.4rem;display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between;margin-top:2.6rem;background:var(--yellow)}
+.swap b{font:800 1.6rem/1 var(--cond);text-transform:uppercase}
+.swap p{margin:.3rem 0 0}
+.swap .btn{background:var(--black);color:#fff}
+
+.visit{display:grid;gap:2rem}
+@media(min-width:52rem){.visit{grid-template-columns:1fr 1fr}}
+table.hrs{border-collapse:collapse;width:100%}
+.hrs td{padding:.55rem 0;border-bottom:1px solid var(--concrete-2)}
+.hrs td:last-child{text-align:right;font-variant-numeric:tabular-nums}
+.hrs tr.today td{font-weight:700}
+.addr{font:800 1.5rem/1.15 var(--cond);text-transform:uppercase;margin:.4rem 0 1rem}
+footer{margin-top:3.6rem;background:var(--black);color:#9EA2A8;padding:1.4rem 1.25rem;display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem;font-size:.9rem}
+footer a{color:#fff}
+.bar{position:fixed;left:0;right:0;bottom:0;display:grid;grid-template-columns:1.3fr 1fr;z-index:9;font:800 1.1rem var(--cond);text-transform:uppercase}
+.bar a{text-align:center;padding:1rem .4rem;text-decoration:none;background:var(--black);color:#fff}
+.bar a:first-child{background:var(--yellow);color:var(--black)}
+.bar a:focus-visible{outline:3px solid var(--red);outline-offset:-3px}
+@media(min-width:60rem){.bar{display:none}}
+</style>
+</head>
+<body>
+<div class="concept">Concept demo by <a href="../mainfront/">Mainfront</a>. Bay Two is a made-up shop; your name, number and photos go here.</div>
+
+<header class="bay">
+  <div class="frame">
+    <div class="door">
+      <div>
+        <p class="num2"><small>BAY</small>02</p>
+        <h1>Bay Two Auto Service</h1>
+        <p>Honest repairs for daily drivers and work trucks in Stony Plain. We call with the price before we turn a wrench.</p>
+        <div class="cta">
+          <a class="btn" href="tel:+17805550187">Call 780-555-0187</a>
+          <a class="btn ghost" href="#ro">What we fix</a>
+        </div>
+      </div>
+      <div class="tag" aria-live="polite">
+        <div class="lbl"><span>Shop status</span><span id="tagno">No. 2</span></div>
+        <b id="tstate">Checking</b>
+        <span id="tline">&nbsp;</span>
+        <div class="hand" id="thand">Drop keys in the slot after hours</div>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="tread" aria-hidden="true"></div>
+
+<main>
+  <section id="ro">
+    <h2>The repair order</h2>
+    <p class="lede">What comes through the bay most weeks. Every job gets a phone call with the price first, and nothing extra gets done without a yes.</p>
+    <div class="ro">
+      <div class="ro-head"><b>Bay Two Auto Service</b><span>Repair order</span></div>
+      <table>
+        <tr><th>Line</th><th>Work</th><th>Price</th></tr>
+        <tr><td>01</td><td><b>Oil and filter</b><small>Synthetic or conventional, plus a look underneath while it's up.</small></td><td>Call</td></tr>
+        <tr><td>02</td><td><b>Tire swaps and storage</b><small>On-rim swaps, mounting, balancing and seasonal storage.</small></td><td>Call</td></tr>
+        <tr><td>03</td><td><b>Brakes</b><small>Pads, rotors, calipers and that grinding noise.</small></td><td>Quote</td></tr>
+        <tr><td>04</td><td><b>Check engine light</b><small>Scan, diagnose, and a plain answer on what it means.</small></td><td>Quote</td></tr>
+        <tr><td>05</td><td><b>Block heaters and batteries</b><small>Before the first -30 morning, not after.</small></td><td>Quote</td></tr>
+        <tr><td>06</td><td><b>Suspension and steering</b><small>Clunks, pulls, ball joints, tie rods.</small></td><td>Quote</td></tr>
+        <tr><td>07</td><td><b>Pre-purchase inspection</b><small>Buying used? Bring it by before you hand over the cash.</small></td><td>Call</td></tr>
+      </table>
+      <div class="sig"><span>Approved by: <i>&nbsp;</i></span><span>Prices go here once the shop confirms them.</span></div>
+    </div>
+  </section>
+
+  <div class="swap" id="swap" hidden>
+    <div><b id="swh">Tire swap season</b><p id="swp">Spots fill up fast after the first snow. Call to get on the list.</p></div>
+    <a class="btn" href="tel:+17805550187">Book a swap</a>
+  </div>
+
+  <section>
+    <div class="calc">
+      <div>
+        <h2>Is your oil change due?</h2>
+        <p style="margin:0;color:#C9CCD0">Look at the sticker in the top corner of your windshield, then your dash.</p>
+        <label for="last">Km on the sticker</label>
+        <input id="last" type="number" inputmode="numeric" placeholder="148000">
+        <label for="now">Km on your dash now</label>
+        <input id="now" type="number" inputmode="numeric" placeholder="152400">
+        <label for="int">Change every (km)</label>
+        <input id="int" type="number" inputmode="numeric" value="8000">
+      </div>
+      <div class="odo" aria-live="polite">
+        <div class="digits" id="digits" aria-hidden="true"></div>
+        <p id="ores" class="ok">Enter your numbers</p>
+        <small id="osub">We'll do the math.</small>
+      </div>
+    </div>
+  </section>
+
+  <section class="visit">
+    <div>
+      <h2>Find the shop</h2>
+      <p class="addr">Stony Plain, Alberta</p>
+      <p>Pull into the lot and park by the second door. After hours, lock your keys in the slot by the office with a note on the tag.</p>
+      <p><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Stony+Plain+AB" target="_blank" rel="noopener" style="background:var(--black);color:#fff">Get directions</a></p>
+    </div>
+    <div>
+      <h2>Hours</h2>
+      <table class="hrs" id="hrs"></table>
+    </div>
+  </section>
+</main>
+
+<footer><span>Bay Two Auto Service · Stony Plain, AB · 780-555-0187</span><span>Website by <a href="../mainfront/">Mainfront</a></span></footer>
+<nav class="bar" aria-label="Quick contact"><a href="tel:+17805550187">Call the shop</a><a href="https://www.google.com/maps/search/?api=1&amp;query=Stony+Plain+AB" target="_blank" rel="noopener">Directions</a></nav>
+
+<script>
+(function(){
+  var HOURS=[null,[480,1050],[480,1050],[480,1050],[480,1050],[480,1020],null];
+  var DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  function edm(){var p={};new Intl.DateTimeFormat('en-US',{timeZone:'America/Edmonton',weekday:'short',hour:'numeric',minute:'numeric',month:'numeric',hourCycle:'h23'}).formatToParts(new Date()).forEach(function(x){p[x.type]=x.value});return{d:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(p.weekday),m:(+p.hour%24)*60+(+p.minute),mo:+p.month}}
+  function t(m){var h=Math.floor(m/60),mm=m%60,ap=h>=12?'PM':'AM';h=h%12||12;return h+(mm?':'+(mm<10?'0':'')+mm:'')+' '+ap}
+  var n=edm(),h=HOURS[n.d],open=h&&n.m>=h[0]&&n.m<h[1];
+  var tb=document.getElementById('hrs');
+  for(var i=1;i<=7;i++){var d=i%7,r=tb.insertRow();if(d===n.d)r.className='today';r.insertCell().textContent=DAYS[d];r.insertCell().textContent=HOURS[d]?t(HOURS[d][0])+' to '+t(HOURS[d][1]):'Closed';}
+  var s=document.getElementById('tstate'),l=document.getElementById('tline'),hd=document.getElementById('thand');
+  if(open){s.textContent='Door is up';s.className='up';l.textContent='Open until '+t(h[1])+'. Walk in or call ahead.';hd.textContent='Drop-offs welcome until '+t(h[1]-30);}
+  else{s.textContent='Door is down';s.className='down';var nx;if(h&&n.m<h[0])nx='today at '+t(h[0]);else{for(var k=1;k<=7;k++){var dd=(n.d+k)%7;if(HOURS[dd]){nx=(k===1?'tomorrow':DAYS[dd])+' at '+t(HOURS[dd][0]);break;}}}l.textContent='Opens '+nx+'.';}
+  // Tire swap season: Oct-Nov and Apr-May
+  var sw=document.getElementById('swap');
+  if(n.mo===10||n.mo===11){sw.hidden=false;}
+  else if(n.mo===4||n.mo===5){sw.hidden=false;document.getElementById('swh').textContent='Summer tire season';document.getElementById('swp').textContent='Snow is done. Swap back, and ask about storing your winters.';}
+  // Oil calculator
+  var a=document.getElementById('last'),b=document.getElementById('now'),c=document.getElementById('int'),dg=document.getElementById('digits'),res=document.getElementById('ores'),sub=document.getElementById('osub');
+  function draw(v){var str=String(Math.max(0,Math.round(v))).padStart(7,'0').slice(-7);dg.innerHTML=str.split('').map(function(ch,i){return '<span'+(i===6?' class="r"':'')+'>'+ch+'</span>'}).join('')}
+  function run(){
+    var x=+a.value,y=+b.value,z=+c.value||8000;
+    draw(y||0);
+    if(!x||!y){res.textContent='Enter your numbers';res.className='ok';sub.textContent="We'll do the math.";return}
+    var left=x+z-y;
+    if(y<x){res.textContent='Check those numbers';res.className='late';sub.textContent='Your dash should be higher than the sticker.';return}
+    if(left<=0){res.textContent='Due now';res.className='late';sub.textContent=Math.abs(left).toLocaleString('en-CA')+' km over. Call and we’ll fit you in.';}
+    else if(left<1000){res.textContent=left.toLocaleString('en-CA')+' km left';res.className='late';sub.textContent='Close. Book it this week.';}
+    else{res.textContent=left.toLocaleString('en-CA')+' km left';res.className='ok';sub.textContent='Next change at '+(x+z).toLocaleString('en-CA')+' km.';}
+  }
+  [a,b,c].forEach(function(e){e.addEventListener('input',run)});run();
+})();
+</script>
+</body>
+</html>

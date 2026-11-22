@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Panel Line Electric (concept demo)</title>
+<meta name="description" content="Concept homepage for a Parkland County electrician, built by Mainfront.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Martian+Mono:wght@500;700&family=Reenie+Beanie&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Concept: the breaker panel. Embossed label-maker tape for the name, a row of breakers
+   you can actually flip, and the handwritten circuit directory on the inside of the door. */
+:root{
+  --wall:#E9E6DF; --panel:#C3C7CA; --panel-2:#AEB3B7; --panel-3:#8F959A; --steel:#2B2F33; --tape:#121314;
+  --copper:#B87333; --ground:#2F7D3B; --hot:#C0392B; --warn:#F4C20D; --card:#FBF6E4; --ink:#1A1C1E; --soft:#5C6166;
+  --head:'Big Shoulders Display','Arial Narrow',sans-serif; --mono:'Martian Mono',ui-monospace,Menlo,monospace;
+  --hand:'Reenie Beanie','Comic Sans MS',cursive; --body:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;font:17px/1.55 var(--body);color:var(--ink);background:var(--wall);padding-bottom:4.4rem}
+@media(min-width:60rem){body{padding-bottom:0}}
+a{color:inherit}
+.concept{background:var(--ink);color:#C4C8CC;font-size:.8rem;text-align:center;padding:.45rem 1rem}
+.concept a{color:#fff;font-weight:600}
+
+.top{max-width:74rem;margin:0 auto;padding:2.6rem 1.25rem 1rem;display:grid;gap:2rem}
+@media(min-width:58rem){.top{grid-template-columns:1fr 1.05fr;align-items:start;padding-top:3.4rem}}
+.dymo{display:inline-block;background:var(--tape);color:#F2F2F2;font:700 clamp(1.05rem,3.4vw,1.5rem)/1 var(--mono);letter-spacing:.18em;padding:.6rem .9rem .55rem;text-transform:uppercase;transform:rotate(-1.2deg);
+  text-shadow:0 1px 0 rgba(255,255,255,.35),0 -1px 0 #000;clip-path:polygon(0 8%,2% 0,98% 0,100% 10%,100% 92%,98% 100%,2% 100%,0 90%)}
+.top h1{font:900 clamp(3rem,10vw,6.2rem)/.86 var(--head);text-transform:uppercase;margin:1.2rem 0 .8rem;letter-spacing:.005em}
+.top h1 span{color:var(--copper)}
+.wires{display:flex;gap:6px;margin:0 0 1.2rem}
+.wires i{height:9px;width:4.5rem;border-radius:5px}
+.lede{max-width:32rem;margin:0 0 1.4rem;color:#33373B}
+.btn{display:inline-block;font:700 1.15rem var(--head);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;padding:.85rem 1.25rem;background:var(--ink);color:#fff;border:0;cursor:pointer}
+.btn.y{background:var(--warn);color:var(--ink)}
+.btn:focus-visible{outline:3px solid var(--copper);outline-offset:3px}
+.btns{display:flex;flex-wrap:wrap;gap:.7rem}
+
+/* Panel */
+.panel{background:var(--panel);border:3px solid var(--panel-3);padding:1rem;box-shadow:inset 0 0 0 6px var(--panel-2)}
+.phead{display:flex;justify-content:space-between;align-items:center;gap:.6rem;font:500 .66rem var(--mono);letter-spacing:.1em;text-transform:uppercase;color:#4A4F54;padding:.2rem .3rem .7rem}
+.warnlbl{background:var(--warn);color:var(--ink);font:700 .62rem var(--mono);padding:.25rem .45rem;border:2px solid var(--ink)}
+.main{display:flex;align-items:center;gap:.8rem;background:var(--steel);color:#EDEDED;padding:.7rem .8rem;margin-bottom:.7rem}
+.main .brk{width:3.3rem;height:2rem;background:#151719;border-radius:3px;position:relative;flex:none}
+.main .brk::after{content:"";position:absolute;top:4px;bottom:4px;width:1.4rem;border-radius:2px;background:#E8E8E8;left:4px;transition:left .3s}
+.main.on .brk::after{left:calc(100% - 1.4rem - 4px)}
+.main b{font:700 .8rem var(--mono);letter-spacing:.08em;display:block}
+.main span{font-size:.88rem;color:#C9CCCF}
+.main.on b{color:#7FD48D}.main.off b{color:#FF8A7E}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:.45rem .7rem;background:#9CA2A7;padding:.55rem;border-radius:2px}
+.brkr{display:flex;align-items:center;gap:.5rem;background:#1D1F22;color:#DADDE0;border:0;padding:.5rem .55rem;font:500 .7rem/1.2 var(--mono);text-align:left;cursor:pointer;min-height:3rem;letter-spacing:.02em}
+.brkr .sw{width:1.35rem;height:1.9rem;flex:none;background:#0E0F10;border-radius:2px;position:relative}
+.brkr .sw::after{content:"";position:absolute;left:3px;right:3px;height:.8rem;background:#9A9EA2;border-radius:2px;top:3px;transition:top .2s,background .2s}
+.brkr[aria-pressed=true]{background:#2A2D31;color:#fff}
+.brkr[aria-pressed=true] .sw::after{top:calc(100% - .8rem - 3px);background:var(--warn)}
+.brkr .amp{margin-left:auto;color:#8D9297;font-size:.62rem}
+.brkr:focus-visible{outline:3px solid var(--warn);outline-offset:1px}
+.dir{background:var(--card);margin-top:.8rem;padding:.8rem 1rem 1rem;border:1px solid #D8CDA4;min-height:9.2rem;background-image:repeating-linear-gradient(transparent 0 1.9rem,#D4E1EC 1.9rem calc(1.9rem + 1px))}
+.dir small{font:500 .62rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#8A7E58;display:block}
+.dir h3{font:2.1rem/1 var(--hand);margin:.2rem 0 .1rem;color:#1F3B8A}
+.dir p{font:1.55rem/1.22 var(--hand);margin:0;color:#1F3B8A}
+
+main{max-width:74rem;margin:0 auto;padding:0 1.25rem}
+section{padding:3.2rem 0 .6rem}
+h2{font:900 clamp(2.1rem,5vw,3.1rem)/.95 var(--head);text-transform:uppercase;margin:0 0 .6rem}
+
+/* Emergency */
+.danger{border:4px solid var(--ink);background:#fff;display:grid;gap:0}
+@media(min-width:52rem){.danger{grid-template-columns:15rem 1fr}}
+.danger .tri{background:var(--warn);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:1.4rem;border-bottom:4px solid var(--ink);text-align:center}
+@media(min-width:52rem){.danger .tri{border-bottom:0;border-right:4px solid var(--ink)}}
+.danger .tri svg{width:5rem;height:auto}
+.danger .tri b{font:900 1.7rem/1 var(--head);text-transform:uppercase;margin-top:.5rem}
+.danger ul{margin:0;padding:1.3rem 1.4rem 1.3rem 2.6rem}
+.danger li{margin:.4rem 0}
+
+/* Jobs as wire runs */
+.runs{display:grid;gap:1.1rem}
+@media(min-width:52rem){.runs{grid-template-columns:1fr 1fr}}
+.run{border-left:9px solid var(--c);padding:.2rem 0 .2rem 1rem}
+.run b{display:block;font:700 1.45rem/1.1 var(--head);text-transform:uppercase}
+.run span{color:var(--soft)}
+
+.visit{display:grid;gap:2rem}
+@media(min-width:52rem){.visit{grid-template-columns:1fr 1fr}}
+table{border-collapse:collapse;width:100%}
+td{padding:.5rem 0;border-bottom:1px solid #CFCBC2}
+td:last-child{text-align:right;font-variant-numeric:tabular-nums}
+tr.today td{font-weight:600}
+footer{margin-top:3.4rem;background:var(--steel);color:#B9BDC1;padding:1.4rem 1.25rem;display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem;font-size:.88rem}
+footer a{color:#fff}
+.bar{position:fixed;left:0;right:0;bottom:0;display:grid;grid-template-columns:1.3fr 1fr;z-index:9;font:700 1.1rem var(--head);letter-spacing:.05em;text-transform:uppercase}
+.bar a{text-align:center;padding:1rem .4rem;text-decoration:none;background:var(--ink);color:#fff}
+.bar a:first-child{background:var(--warn);color:var(--ink)}
+.bar a:focus-visible{outline:3px solid var(--copper);outline-offset:-3px}
+@media(min-width:60rem){.bar{display:none}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="concept">Concept demo by <a href="../mainfront/">Mainfront</a>. Panel Line is a made-up company; your name, licence and photos go here.</div>
+
+<header class="top">
+  <div>
+    <span class="dymo">Master electrician</span>
+    <h1>Panel Line <span>Electric</span></h1>
+    <div class="wires" aria-hidden="true"><i style="background:#1A1C1E"></i><i style="background:#C0392B"></i><i style="background:#F2F2EE;box-shadow:inset 0 0 0 1px #BBB"></i><i style="background:#B87333"></i></div>
+    <p class="lede">Panel upgrades, EV chargers, basement wiring and the outlet that's been dead since you moved in. Homes, shops and acreages across Parkland County.</p>
+    <div class="btns"><a class="btn y" href="tel:+17805550118">Call 780-555-0118</a><a class="btn" href="#panel">Flip a breaker</a></div>
+  </div>
+
+  <div class="panel" id="panel">
+    <div class="phead"><span>Panel Line · 200A · 120/240V</span><span class="warnlbl">Licensed</span></div>
+    <div class="main" id="mainbrk" aria-live="polite"><div class="brk" aria-hidden="true"></div><div><b id="mstate">MAIN</b><span id="mline">&nbsp;</span></div></div>
+    <div class="cols" id="cols" role="group" aria-label="Services. Flip one to read about it."></div>
+    <div class="dir" aria-live="polite"><small>Circuit directory</small><h3 id="dh">Flip a breaker</h3><p id="dp">Each one is a job we do. Flip it on to read about it.</p></div>
+  </div>
+</header>
+
+<main>
+  <section>
+    <div class="danger">
+      <div class="tri">
+        <svg viewBox="0 0 100 90" aria-hidden="true"><path d="M50 4 L96 86 H4 Z" fill="#F4C20D" stroke="#1A1C1E" stroke-width="6" stroke-linejoin="round"/><path d="M54 26 L38 54 H52 L44 76 L64 44 H50 Z" fill="#1A1C1E"/></svg>
+        <b>Smell burning?</b>
+      </div>
+      <ul>
+        <li><b>Burning smell, smoke or sparks:</b> get everyone out and call 911 first. Then call us.</li>
+        <li><b>Power line down:</b> stay well back, keep others away, and call 911.</li>
+        <li><b>Breaker keeps tripping:</b> leave it off and unplug things on that circuit. Don't hold it on.</li>
+        <li><b>Whole house out:</b> check if your neighbours are out too. If they are, it's the utility, not your panel.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Wire colour, job type</h2>
+    <p style="color:var(--soft);max-width:34rem;margin:0 0 1.6rem">Everything gets a permit when the code says it needs one. You get the paperwork.</p>
+    <div class="runs">
+      <div class="run" style="--c:#1A1C1E"><b>Homes</b><span>Panel swaps, pot lights, basement developments, smoke and CO alarms.</span></div>
+      <div class="run" style="--c:#C0392B"><b>EV and garages</b><span>Level 2 chargers, sub-panels, block-heater outlets that actually work at -35.</span></div>
+      <div class="run" style="--c:#B87333"><b>Acreages and shops</b><span>Shop feeds, yard lights, well pumps, generator hookups.</span></div>
+      <div class="run" style="--c:#2F7D3B"><b>Small businesses</b><span>Tenant improvements, signage, lighting retrofits.</span></div>
+    </div>
+  </section>
+
+  <section class="visit">
+    <div>
+      <h2>Service area</h2>
+      <p>Stony Plain, Spruce Grove, Parkland County, Acheson and west Edmonton. Acreage calls welcome.</p>
+      <p><a class="btn" href="tel:+17805550118">Book a quote</a></p>
+    </div>
+    <div>
+      <h2>Office hours</h2>
+      <table id="hrs"></table>
+    </div>
+  </section>
+</main>
+
+<footer><span>Panel Line Electric · Parkland County, AB · 780-555-0118</span><span>Website by <a href="../mainfront/">Mainfront</a></span></footer>
+<nav class="bar" aria-label="Quick contact"><a href="tel:+17805550118">Call now</a><a href="sms:+17805550118">Text a photo</a></nav>
+
+<script>
+(function(){
+  var S=[['Panel upgrade','100A to 200A, old fuse panels, full replacements.','40A'],
+         ['EV charger','Level 2 install in the garage, with load calc and permit.','50A'],
+         ['Basement wiring','Rough-in to final for basement developments.','15A'],
+         ['Pot lights','Retrofit pot lights with no drywall mess.','15A'],
+         ['Hot tub','Disconnect, GFCI and the trench to the tub.','50A'],
+         ['Shop feed','Power to the shop or barn, overhead or buried.','60A'],
+         ['Generator','Interlock kits and transfer switches for outages.','30A'],
+         ['Trouble call','Dead outlets, flickering lights, tripping breakers.','20A']];
+  var cols=document.getElementById('cols'),dh=document.getElementById('dh'),dp=document.getElementById('dp');
+  S.forEach(function(s,i){
+    var b=document.createElement('button');b.type='button';b.className='brkr';b.setAttribute('aria-pressed','false');
+    b.innerHTML='<span class="sw" aria-hidden="true"></span><span>'+s[0]+'</span><span class="amp">'+s[2]+'</span>';
+    b.addEventListener('click',function(){
+      var on=b.getAttribute('aria-pressed')!=='true';
+      [].forEach.call(cols.children,function(x){x.setAttribute('aria-pressed','false')});
+      b.setAttribute('aria-pressed',on?'true':'false');
+      if(on){dh.textContent=(i+1)+'. '+s[0];dp.textContent=s[1]}else{dh.textContent='Flip a breaker';dp.textContent='Each one is a job we do. Flip it on to read about it.'}
+    });
+    cols.appendChild(b);
+  });
+  var HOURS=[null,[450,990],[450,990],[450,990],[450,990],[450,960],null];
+  var DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  function edm(){var p={};new Intl.DateTimeFormat('en-US',{timeZone:'America/Edmonton',weekday:'short',hour:'numeric',minute:'numeric',hourCycle:'h23'}).formatToParts(new Date()).forEach(function(x){p[x.type]=x.value});return{d:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(p.weekday),m:(+p.hour%24)*60+(+p.minute)}}
+  function t(m){var h=Math.floor(m/60),mm=m%60,ap=h>=12?'PM':'AM';h=h%12||12;return h+(mm?':'+(mm<10?'0':'')+mm:'')+' '+ap}
+  var n=edm(),h=HOURS[n.d],open=h&&n.m>=h[0]&&n.m<h[1],tb=document.getElementById('hrs');
+  for(var i=1;i<=7;i++){var d=i%7,r=tb.insertRow();if(d===n.d)r.className='today';r.insertCell().textContent=DAYS[d];r.insertCell().textContent=HOURS[d]?t(HOURS[d][0])+' to '+t(HOURS[d][1]):'Emergencies only';}
+  var mb=document.getElementById('mainbrk');
+  if(open){mb.className='main on';document.getElementById('mstate').textContent='MAIN · ON';document.getElementById('mline').textContent='Office is open until '+t(h[1])+'. Call or text.';}
+  else{mb.className='main off';document.getElementById('mstate').textContent='MAIN · OFF';document.getElementById('mline').textContent='Office closed. Emergencies, call anyway.';}
+})();
+</script>
+</body>
+</html>
