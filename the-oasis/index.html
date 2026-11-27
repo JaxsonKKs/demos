@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Oasis · Wabamun</title>
+<meta name="description" content="The Oasis, the restaurant at the Wabamun Hotel. Breakfast from 8, Chinese and Western plates, open daily 8 am to 9 pm. 5140 51 Ave, Wabamun.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* Concept: the laminated diner menu card on The Oasis's own tables.
+   Cream card with the faint diagonal sheen, italic serif headings, dot-leader prices,
+   the maroon hours banner, and the black-and-white checker paper from their takeout baskets.
+   Reviews are written up as guest-check slips from the order pad. */
+:root{
+  --card:#F5F0E4;--card2:#EDE6D5;--ink:#221C18;--soft:#5E544A;--rule:#C9BFAC;
+  --maroon:#7A1E25;--maroon2:#5C141A;--check:#1F1B18;--slip:#FBF8EF;--slipline:#B9D3CF;
+  --serif:'Libre Caslon Text',Georgia,'Times New Roman',serif;
+  --type:'Courier Prime','Courier New',monospace;
+}
+*{box-sizing:border-box}
+html{background:#2A221D}
+body{margin:0;color:var(--ink);font-family:var(--serif);font-size:17px;line-height:1.55;
+  background:
+    repeating-linear-gradient(115deg,rgba(255,255,255,.0) 0 7px,rgba(255,255,255,.35) 7px 8px,rgba(255,255,255,0) 8px 15px),
+    var(--card);
+  padding-bottom:calc(5.2rem + env(safe-area-inset-bottom,0px));
+  -webkit-font-smoothing:antialiased}
+a{color:var(--maroon)}
+.wrap{max-width:40rem;margin:0 auto;padding:0 1.25rem}
+
+/* checker paper strip */
+.checker{height:18px;background:
+  conic-gradient(var(--check) 25%,#fff 0 50%,var(--check) 0 75%,#fff 0) 0 0/18px 18px;}
+
+header{padding:2.6rem 0 1.4rem;text-align:center}
+.hotel{font-family:var(--type);font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--soft);margin:0 0 .5rem}
+h1{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(3.2rem,15vw,5.2rem);line-height:.95;margin:0;color:var(--maroon);letter-spacing:-.01em}
+.tag{font-style:italic;margin:.7rem auto 0;max-width:26rem;color:var(--soft)}
+
+/* the maroon banner from their breakfast menu */
+.banner{display:block;margin:1.5rem auto 0;max-width:24rem;background:var(--maroon);color:#F8EFE3;
+  padding:.65rem 1rem;text-align:center;font-style:italic;font-weight:700;font-size:1.08rem;
+  box-shadow:0 0 0 3px var(--card),0 0 0 4px var(--maroon)}
+.banner small{display:block;font-style:normal;font-weight:400;font-family:var(--type);font-size:.78rem;letter-spacing:.04em;opacity:.9;margin-top:.15rem}
+.dot{display:inline-block;width:.5rem;height:.5rem;border-radius:50%;background:#E9C46A;margin-right:.45rem;vertical-align:.1em}
+.closed .dot{background:#B9AFA4}
+
+section{padding:2.2rem 0;border-top:1px solid var(--rule)}
+h2{font-family:var(--serif);font-style:italic;font-weight:700;font-size:1.55rem;text-align:center;margin:0 0 .3rem;color:var(--ink)}
+.under{text-align:center;color:var(--soft);font-style:italic;margin:0 0 1.4rem;font-size:.95rem}
+
+/* dot-leader menu lines */
+.menu h3{font-style:italic;font-weight:700;font-size:1.12rem;text-align:center;margin:1.6rem 0 .5rem}
+.menu h3:first-of-type{margin-top:.4rem}
+.ln{display:flex;align-items:baseline;gap:.4rem;margin:.35rem 0}
+.ln .n{flex:none;max-width:78%}
+.ln .n i{display:block;font-size:.88rem;color:var(--soft)}
+.ln .d{flex:1;border-bottom:2px dotted var(--rule);transform:translateY(-.3rem);min-width:1.5rem}
+.ln .p{font-family:var(--type);font-weight:700;flex:none}
+.fine{text-align:center;font-family:var(--type);font-size:.82rem;color:var(--soft);margin:1.4rem 0 0}
+
+.also{display:grid;gap:.9rem;margin-top:.3rem}
+.also p{margin:0}
+.also b{font-style:italic;color:var(--maroon)}
+
+/* guest-check slips */
+.slips{display:grid;gap:1.1rem}
+.slip{background:
+    repeating-linear-gradient(var(--slip) 0 1.55rem,var(--slipline) 1.55rem calc(1.55rem + 1px)),var(--slip);
+  border:1px solid #DCD3C1;padding:.9rem 1rem 1rem;position:relative;
+  box-shadow:0 1px 0 rgba(0,0,0,.06),0 6px 14px -8px rgba(40,25,15,.35)}
+.slip:nth-child(odd){transform:rotate(-.6deg)}
+.slip:nth-child(even){transform:rotate(.5deg)}
+.slip::before{content:"";position:absolute;left:0;right:0;top:-1px;height:6px;
+  background:radial-gradient(circle at 4px 0,transparent 3px,var(--slip) 3.5px) 0 0/8px 6px}
+.sh{display:flex;justify-content:space-between;align-items:baseline;gap:.6rem;font-family:var(--type);font-size:.78rem;color:var(--maroon);
+  text-transform:uppercase;letter-spacing:.08em;border-bottom:1px solid var(--maroon);padding-bottom:.3rem;margin-bottom:.5rem}
+.stars{color:#B07A12;letter-spacing:.1em}
+.slip q{display:block;font-family:var(--type);font-size:.95rem;line-height:1.55rem;quotes:none}
+.who{font-style:italic;margin-top:.5rem;text-align:right}
+.src{text-align:center;font-family:var(--type);font-size:.8rem;color:var(--soft);margin:1.4rem 0 0}
+
+/* visit */
+.visit{display:grid;gap:1.2rem}
+@media(min-width:34rem){.visit{grid-template-columns:1fr 1fr}}
+.visit h3{font-style:italic;margin:0 0 .3rem;font-size:1.1rem}
+.visit p{margin:0}
+.hours .ln{margin:.2rem 0}
+.hours .ln.today{color:var(--maroon);font-weight:700}
+
+footer{padding:1.6rem 0 2rem;text-align:center;font-family:var(--type);font-size:.78rem;color:var(--soft)}
+
+/* call / directions bar */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:5;display:grid;grid-template-columns:1fr 1fr;gap:.6rem;
+  padding:.7rem max(1rem,env(safe-area-inset-left,0px)) calc(.7rem + env(safe-area-inset-bottom,0px));
+  background:var(--maroon2);border-top:4px solid var(--check)}
+.bar a{display:flex;align-items:center;justify-content:center;gap:.5rem;min-height:3rem;text-decoration:none;
+  font-family:var(--type);font-weight:700;font-size:1rem;letter-spacing:.04em;border-radius:.3rem}
+.bar .call{background:#F5F0E4;color:var(--maroon2)}
+.bar .dir{border:2px solid #F5F0E4;color:#F5F0E4}
+.bar a:focus-visible{outline:3px solid #E9C46A;outline-offset:2px}
+.bar svg{width:1.1rem;height:1.1rem}
+</style>
+</head>
+<body>
+<div class="checker" aria-hidden="true"></div>
+
+<div class="wrap">
+<header>
+  <p class="hotel">At the Wabamun Hotel</p>
+  <h1>The Oasis</h1>
+  <p class="tag">Home cooking and big plates on 51st Avenue, from the first coffee at 8 to supper at 9.</p>
+  <div class="banner" id="status" aria-live="polite">
+    <span class="dot"></span><span id="st1">Open daily, 8:00 am to 9:00 pm</span>
+    <small id="st2">Breakfast menu 8:00 am to 11:00 am</small>
+  </div>
+</header>
+
+<section class="menu" aria-labelledby="mh">
+  <h2 id="mh">Breakfast Menu</h2>
+  <p class="under">Served 8:00 am to 11:00 am. Extra charge $1.00 after 11:00 am.</p>
+
+  <h3>Buttermilk Pancakes</h3>
+  <div class="ln"><span class="n">2 Pancakes</span><span class="d"></span><span class="p">8.25</span></div>
+  <div class="ln"><span class="n">1 Pancake</span><span class="d"></span><span class="p">4.50</span></div>
+
+  <h3>French Toast</h3>
+  <div class="ln"><span class="n">2 Pieces</span><span class="d"></span><span class="p">8.25</span></div>
+  <div class="ln"><span class="n">1 Piece</span><span class="d"></span><span class="p">4.50</span></div>
+
+  <h3>Seniors &amp; Juniors</h3>
+  <div class="ln"><span class="n">1 Egg, Hash Browns and Toast</span><span class="d"></span><span class="p">6.50</span></div>
+  <div class="ln"><span class="n">1 Egg, Ham, Bacon or Sausage<i>with hash browns and toast</i></span><span class="d"></span><span class="p">8.50</span></div>
+  <div class="ln"><span class="n">2 Egg Omelette<i>ham and cheese</i></span><span class="d"></span><span class="p">8.95</span></div>
+
+  <p class="fine">A few favourites. Ask for the full menu.</p>
+</section>
+
+<section aria-labelledby="ah">
+  <h2 id="ah">Past Breakfast</h2>
+  <p class="under">Chinese and Western plates, cooked to order.</p>
+  <div class="also">
+    <p><b>Noodles with BBQ pork and shrimp.</b> Served in the checkered takeout basket.</p>
+    <p><b>Jalapeño popper burgers.</b> With a cream cheese filling. Dine in or take out.</p>
+    <p><b>Celiac and gluten-free guests.</b> Tell your server. Celiac diners have praised the care the kitchen takes.</p>
+  </div>
+</section>
+
+<section aria-labelledby="rh">
+  <h2 id="rh">From the Order Pad</h2>
+  <p class="under">What guests wrote on Google.</p>
+  <div class="slips">
+    <article class="slip">
+      <div class="sh"><span>Guest check</span><span class="stars" aria-label="5 out of 5 stars">★★★★★</span></div>
+      <q>This Google review is long over due. I have boasted about the amazing food at The Oasis on the Gluten Free Edmonton Support Group on Facebook, but…</q>
+      <div class="who">A.D. Rehbein</div>
+    </article>
+    <article class="slip">
+      <div class="sh"><span>Guest check</span><span class="stars" aria-label="5 out of 5 stars">★★★★★</span></div>
+      <q>The Oasis is one of those places that just feels like home. The food is consistently delicious, the portions are generous…</q>
+      <div class="who">Skyy Archershee</div>
+    </article>
+    <article class="slip">
+      <div class="sh"><span>Guest check</span><span class="stars" aria-label="5 out of 5 stars">★★★★★</span></div>
+      <q>Delicious &amp; Delightful, today they made my birthday very special!!! They made my ultimate favorite foods with extra care!</q>
+      <div class="who">Jodi Dawn Myckan</div>
+    </article>
+    <article class="slip">
+      <div class="sh"><span>Guest check</span><span class="stars" aria-label="5 out of 5 stars">★★★★★</span></div>
+      <q>Amazing- Simple as that. We ordered takeout this time &amp; had their Jalapeño popper burgers…</q>
+      <div class="who">Mackenzie Wilson</div>
+    </article>
+  </div>
+  <p class="src">Excerpts from Google reviews.</p>
+</section>
+
+<section aria-labelledby="vh">
+  <h2 id="vh">Come On In</h2>
+  <p class="under">Inside the Wabamun Hotel.</p>
+  <div class="visit">
+    <div>
+      <h3>Find us</h3>
+      <p>5140 51 Ave<br>Wabamun, AB T0E 2K0</p>
+      <p style="margin-top:.6rem"><a href="tel:+17808922214">780-892-2214</a></p>
+    </div>
+    <div class="hours">
+      <h3>Hours</h3>
+      <div id="hrs"></div>
+    </div>
+  </div>
+</section>
+</div>
+
+<div class="checker" aria-hidden="true"></div>
+<footer>
+  Demo by Mainfront · (825) 977-2662
+</footer>
+
+<nav class="bar" aria-label="Contact">
+  <a class="call" href="tel:+17808922214">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
+    Call
+  </a>
+  <a class="dir" href="https://www.google.com/maps/dir/?api=1&amp;destination=The+Oasis+5140+51+Ave+Wabamun+AB" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+    Directions
+  </a>
+</nav>
+
+<script>
+(function(){
+  var OPEN=8*60, CLOSE=21*60, BFEND=11*60;
+  var DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  function now(){
+    try{
+      var p=new Intl.DateTimeFormat('en-CA',{timeZone:'America/Edmonton',weekday:'long',hour:'numeric',minute:'numeric',hour12:false}).formatToParts(new Date());
+      var o={};p.forEach(function(x){o[x.type]=x.value;});
+      return {day:o.weekday,min:(+o.hour%24)*60+(+o.minute)};
+    }catch(e){var d=new Date();return {day:DAYS[d.getDay()],min:d.getHours()*60+d.getMinutes()};}
+  }
+  var t=now(), b=document.getElementById('status'), s1=document.getElementById('st1'), s2=document.getElementById('st2');
+  if(t.min>=OPEN && t.min<CLOSE){
+    s1.textContent='Open now until 9:00 pm';
+    s2.textContent = t.min<BFEND ? 'Breakfast menu, regular price until 11:00 am' : 'Breakfast all day: $1.00 extra after 11:00 am';
+  }else{
+    b.classList.add('closed');
+    s1.textContent='Closed now';
+    s2.textContent='Opens at 8:00 am · breakfast till 11:00 am';
+  }
+  var h=document.getElementById('hrs'), order=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+  order.forEach(function(d){
+    var r=document.createElement('div');r.className='ln'+(d===t.day?' today':'');
+    r.innerHTML='<span class="n">'+d+'</span><span class="d"></span><span class="p">8–9</span>';
+    h.appendChild(r);
+  });
+})();
+</script>
+</body>
+</html>
