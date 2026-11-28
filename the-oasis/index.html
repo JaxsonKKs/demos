@@ -5,7 +5,7 @@
 <meta name="robots" content="noindex">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>The Oasis · Wabamun</title>
-<meta name="description" content="The Oasis, the restaurant at the Wabamun Hotel. Breakfast from 8, Chinese and Western plates, open daily 8 am to 9 pm. 5140 51 Ave, Wabamun.">
+<meta name="description" content="The Oasis, the restaurant at the Wabamun Hotel. Breakfast from 8, Chinese and Western plates, open 8 am to 9 pm, closed Mondays. 5140 51 Ave, Wabamun.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
@@ -114,7 +114,7 @@ footer{padding:1.6rem 0 2rem;text-align:center;font-family:var(--type);font-size
   <h1>The Oasis</h1>
   <p class="tag">Home cooking and big plates on 51st Avenue, from the first coffee at 8 to supper at 9.</p>
   <div class="banner" id="status" aria-live="polite">
-    <span class="dot"></span><span id="st1">Open daily, 8:00 am to 9:00 pm</span>
+    <span class="dot"></span><span id="st1">Open 8:00 am to 9:00 pm · closed Mondays</span>
     <small id="st2">Breakfast menu 8:00 am to 11:00 am</small>
   </div>
 </header>
@@ -222,18 +222,20 @@ footer{padding:1.6rem 0 2rem;text-align:center;font-family:var(--type);font-size
     }catch(e){var d=new Date();return {day:DAYS[d.getDay()],min:d.getHours()*60+d.getMinutes()};}
   }
   var t=now(), b=document.getElementById('status'), s1=document.getElementById('st1'), s2=document.getElementById('st2');
-  if(t.min>=OPEN && t.min<CLOSE){
+  var isMon=t.day==='Monday';
+  if(!isMon && t.min>=OPEN && t.min<CLOSE){
     s1.textContent='Open now until 9:00 pm';
     s2.textContent = t.min<BFEND ? 'Breakfast menu, regular price until 11:00 am' : 'Breakfast all day: $1.00 extra after 11:00 am';
   }else{
     b.classList.add('closed');
-    s1.textContent='Closed now';
-    s2.textContent='Opens at 8:00 am · breakfast till 11:00 am';
+    var nextTue = isMon || (t.day==='Sunday' && t.min>=CLOSE);
+    s1.textContent = isMon ? 'Closed Mondays' : 'Closed now';
+    s2.textContent = nextTue ? 'Opens Tuesday at 8:00 am · breakfast till 11:00 am' : 'Opens at 8:00 am · breakfast till 11:00 am';
   }
   var h=document.getElementById('hrs'), order=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
   order.forEach(function(d){
     var r=document.createElement('div');r.className='ln'+(d===t.day?' today':'');
-    r.innerHTML='<span class="n">'+d+'</span><span class="d"></span><span class="p">8–9</span>';
+    r.innerHTML='<span class="n">'+d+'</span><span class="d"></span><span class="p">'+(d==='Monday'?'Closed':'8–9')+'</span>';
     h.appendChild(r);
   });
 })();
